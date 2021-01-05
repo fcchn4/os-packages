@@ -20,64 +20,18 @@ deb http://archive.canonical.com/ubuntu focal partner
 deb-src http://archive.canonical.com/ubuntu focal partner
 ```
 
-## Extra Repositories
+## Update and Install Packages 
 
 ```bash
-## Beekeeper
-deb https://dl.bintray.com/beekeeper-studio/releases disco main
+## Update Operating System 
+apt update
+apt upgrade -y
 
-## Gradle Compiler Java 
-deb http://ppa.launchpad.net/cwchien/gradle/ubuntu focal main
-# deb-src http://ppa.launchpad.net/cwchien/gradle/ubuntu focal main
-
-## Docker CE
-deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-# deb-src [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-
-## Github Official Tool
-deb https://cli.github.com/packages focal main
-# deb-src https://cli.github.com/packages focal main
-
-## Google Chrome 
-deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-
-## Libreoffice PPA
-deb http://ppa.launchpad.net/libreoffice/libreoffice-7-0/ubuntu focal main
-# deb-src http://ppa.launchpad.net/libreoffice/libreoffice-7-0/ubuntu focal main
-
-## MariaDB 10.5 Stable
-deb [arch=amd64] https://mirror.ufro.cl/mariadb/repo/10.5/ubuntu focal main
-deb-src https://mirror.ufro.cl/mariadb/repo/10.5/ubuntu focal main
-
-## NodeJS
-deb https://deb.nodesource.com/node_14.x focal main
-deb-src https://deb.nodesource.com/node_14.x focal main
-
-## Spotify
-deb http://repository.spotify.com stable non-free
-
-## Typora - Markdown client
-deb https://typora.io/linux ./
-# deb-src https://typora.io/linux ./
-
-## VirtualBox
-deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib
-
-## VSCode
-deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main
-
-## Yarn 
-deb https://dl.yarnpkg.com/debian/ stable main
-```
-
-## Base Packages
-
-```bash
-## Packages Essentials
+## Installing required packages
 apt install -y linux-headers-$(uname -r) build-essential checkinstall make \
 automake cmake autoconf lsb-release dkms
 
-## Packages requiered for hardware Intel
+## Intel Firmware and sensors controller
 apt install -y intel-microcode intel-gpu-tools lm-sensors
 
 ## For lm-sensors
@@ -93,19 +47,38 @@ apt install -y apt-transport-https ca-certificates curl \
 gnupg-agent software-properties-common tuned tuned-gtk tuned-utils \
 hardinfo arc-theme acpi acpid acpitool software-properties-common dirmngr
 
-## Cursor Mouse
-apt install -y oxygen-cursor-theme
+## Ubuntu extra tools
+apt install -y ubuntu-restricted-extras xubuntu-icon-theme
 ```
 
-## Ubuntu Restricted Extras
+## Uninstall snap
 
 ```bash
-## Extras
-apt install -y ubuntu-restricted-extras
+## List and remove snap packages
+snap list
+snap remove <NAME_PACKAGE>
 
+## Unmount snap point
+umount /snap/core/<ID_INSIDE>
+## or 
+umount /var/snap
+
+## Purge snap
+apt purge snapd
+
+## Remove snap files
+rm -rf ~/snap
+sudo rm -rf /snap
+sudo rm -rf /var/snap
+sudo rm -rf /var/lib/snapd
+```
+
+## Audio Codecs
+
+```bash
 ## Codecs, Sound and Video
 apt install -y vlc gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad \
-gstreamer1.0-pulseaudio vorbis-tools faac faad ffmpeg ffmpeg2theora libdvdcss2
+gstreamer1.0-pulseaudio vorbis-tools faac faad ffmpeg ffmpeg2theora
 ```
 
 ## Tipografías
@@ -120,19 +93,97 @@ apt install -y ttf-mscorefonts-installer fonts-freefont-ttf fonts-freefont-otf
 ```bash
 ## Editor images
 apt install -y gimp gimp-data-extras inkscape inkscape-open-symbols dia \
-dia-rib-network dia-shapes dia-common
+dia-rib-network dia-shapes dia-common blender blender-ogrexml-1.9
+```
+
+## Tools for DB
+
+```bash
+## SQLite3
+apt install -y sqlitebrowser sqlmap sqlite3
+
+## MariaDB
+apt install software-properties-common dirmngr apt-transport-https
+apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+add-apt-repository 'deb [arch=amd64] https://mirror.insacom.cl/mariadb/repo/10.5/ubuntu focal main'
+## Update repos
+apt update
+apt upgrade -y
+## Install MariaDB
+apt install -y mariadb-server mariadb-client mycli
+```
+
+## Google Chrome
+
+```bash
+## Add repo
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 78BD65473CB3BD13
+## Update repo
+apt update
+## Install Web Browser
+apt install -y google-chrome-stable
+```
+
+## Electronic Tools
+
+```bash
+apt install -y arduino arduino-core fritzing fritzing-parts
+```
+
+## VSCode
+
+```bash
+## Add repo
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+rm packages.microsoft.gpg
+sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+## Update repo
+apt update
+## Install packages
+apt install apt-transport-https
+apt install code
+```
+
+## Typora
+
+```bash
+## Add repo
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+add-apt-repository 'deb https://typora.io/linux ./'
+## Update repo
+apt-get update
+## Install Package
+apt-get install typora
+```
+
+## Extra tools
+
+```bash
+## Hardware detect
+apt install hwinfo 
+
+## Tools for video
+apt install -y mesa-utils 
+
+## Network scan
+apt install -y iftop 
+
+## Hacking tools
+apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark
+
+## Varied tools
+apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet
+
+## Mail tools
+apt install -y geary hunspell-es
 ```
 
 ## Dash Dock for Gnome
 
 ```bash
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-```
-
-## Tools
-
-```bash
-apt install hwinfo mesa-utils iftop crunch
 ```
 
 ## Comandos 

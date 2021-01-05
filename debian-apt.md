@@ -9,7 +9,7 @@ For **/etc/apt/sources.list**:
 deb http://ftp.br.debian.org/debian buster main contrib non-free
 deb http://ftp.br.debian.org/debian buster-updates main contrib non-free
 deb http://ftp.br.debian.org/debian buster-backports main contrib non-free
-deb http://security.debian.org/debian-security buster/updates main contribnon-free
+deb http://security.debian.org/debian-security buster/updates main contrib non-free
 
 ## Multimedia Repository non-free
 deb http://www.deb-multimedia.org buster main non-free
