@@ -175,15 +175,126 @@ apt install -y iftop
 
 ## Hacking tools
 apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark \
-nmap
+nmap tcpdump testssl.sh stegosuite exiftool
+
+## Privileges
+adduser $(whoami) wireshark
+adduser $(whoami) tcpdump
 
 ## Varied tools
 apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet mlocate \
-jq 
+jq ghex gqrx-sdr
 
 ## Mail tools
 apt install -y geary hunspell-es
 ```
+
+## Remote server
+
+```bash
+## SSH server
+apt install -y ssh openssh-server openssh-client mosh
+```
+
+## Firewall
+
+```bash
+apt install -y ufw
+```
+
+## KVM 
+
+```bash
+## KVM Virtualization
+apt install -y qemu-kvm qemu-utils libvirt-clients libvirt-daemon-system \
+virt-viewer virt-what virtinst virt-manager
+
+## For privileges
+adduser $(whoami) libvirt
+adduser $(whoami) libvirt-qemu
+adduser $(whoami) kvm
+```
+
+## VirtualBox
+
+```bash
+## Add repo
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+## Update repo
+apt update
+## Install packages
+apt install -y virtualbox-6.1
+
+## Privileges
+adduser $(whoami) vboxusers
+```
+
+## Docker-CE
+
+```bash
+## Install dependences
+apt-get install apt-transport-https ca-certificates curl \
+gnupg-agent software-properties-common
+
+## Add keys
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+## Add repo
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable"
+
+## Update repo
+apt-get update
+
+## Install packages 
+apt-get install docker-ce docker-ce-cli containerd.io
+
+## Privileges
+adduser $(whoami) docker
+```
+
+## Docker Compose
+
+```bash
+## Download binary
+curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+## Execute privilege
+chmod +x /usr/local/bin/docker-compose
+```
+
+## Vagrant
+
+```bash
+## Install packages
+apt install -y vagrant vagrant-digitalocean vagrant-libvirt
+```
+
+## Ansible
+
+```bash
+apt install -y ansible
+```
+
+## Terraform
+
+```bash
+## Add key
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+## Add repo
+apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+## Update repo
+apt update
+
+## Install package
+apt install terraform
+```
+
+## AWS CLI
+
 
 ## Dash Dock for Gnome
 
