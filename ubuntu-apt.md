@@ -48,7 +48,10 @@ gnupg-agent software-properties-common tuned tuned-gtk tuned-utils \
 hardinfo arc-theme acpi acpid acpitool software-properties-common dirmngr
 
 ## Ubuntu extra tools
-apt install -y ubuntu-restricted-extras xubuntu-icon-theme
+apt install -y ubuntu-restricted-extras xubuntu-icon-theme 
+
+## Vim 
+apt install -y vim vim-scripts vim-syntax-docker vim-syntax-gtk
 ```
 
 ## Uninstall snap
@@ -171,10 +174,11 @@ apt install -y mesa-utils
 apt install -y iftop 
 
 ## Hacking tools
-apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark
+apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark \
+nmap
 
 ## Varied tools
-apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet
+apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet mlocate
 
 ## Mail tools
 apt install -y geary hunspell-es
