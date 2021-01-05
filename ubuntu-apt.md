@@ -175,7 +175,7 @@ apt install -y iftop
 
 ## Hacking tools
 apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark \
-nmap tcpdump testssl.sh stegosuite exiftool
+nmap tcpdump testssl.sh stegosuite exiftool nikto whatweb sqlmap
 
 ## Privileges
 adduser $(whoami) wireshark
@@ -183,10 +183,18 @@ adduser $(whoami) tcpdump
 
 ## Varied tools
 apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet mlocate \
-jq ghex gqrx-sdr
+jq ghex gqrx-sdr terminator tree gparted gpart parted ntfs-3g exfat-fuse exfat-utils git \
+curl wget whois telnet 
 
 ## Mail tools
 apt install -y geary hunspell-es
+```
+
+## Printers
+
+```bash
+## Packages printers
+apt install -y cups cups-core-drivers cups-filters cups-filters-core-drivers cups-ipp-utils hplip hplip-data
 ```
 
 ## Remote server
