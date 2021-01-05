@@ -293,6 +293,42 @@ apt update
 apt install terraform
 ```
 
+## Libreoffice 7
+
+```bash
+## Create file
+vim /etc/apt/sources.list.d/libreoffice-7-focal.list
+-- deb http://ppa.launchpad.net/libreoffice/libreoffice-7-0/ubuntu focal main
+-- # deb-src http://ppa.launchpad.net/libreoffice/libreoffice-7-0/ubuntu focal main
+
+## Add key and update 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key_repo>
+apt update
+apt upgrade -y
+```
+
+## Chromium Browser no Snap
+
+```bash
+## Create file repo
+vim /etc/apt/sources.list.d/xalt7x-chromium-vaapi.list 
+-- deb http://ppa.launchpad.net/xalt7x/chromium-deb-vaapi/ubuntu focal main
+-- # deb-src http://ppa.launchpad.net/xalt7x/chromium-deb-vaapi/ubuntu focal main
+
+## Create pin file
+vim /etc/apt/preferences.d/pin-xalt7x-chromium-deb-vaapi
+-- Package: *
+-- Pin: release o=LP-PPA-xalt7x-chromium-deb-vaapi
+-- Pin-Priority: 1337
+
+## Add key and update 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key_repo>
+apt update
+
+## Install packages
+apt install -y chromium-browser chromium-browser-l10n
+```
+
 ## AWS CLI
 
 
