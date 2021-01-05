@@ -178,7 +178,8 @@ apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wire
 nmap
 
 ## Varied tools
-apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet mlocate
+apt install -y peek putty putty-tools telegram-desktop transmission cheese figlet mlocate \
+jq 
 
 ## Mail tools
 apt install -y geary hunspell-es
