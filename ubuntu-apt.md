@@ -175,7 +175,8 @@ apt install -y iftop
 
 ## Hacking tools
 apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark \
-nmap tcpdump testssl.sh stegosuite exiftool nikto whatweb sqlmap
+nmap tcpdump testssl.sh stegosuite exiftool nikto whatweb sqlmap traceroute httrack \
+hydra hydra-gtk chkrootkit hping3 fping masscan
 
 ## Privileges
 adduser $(whoami) wireshark
@@ -192,6 +193,15 @@ apt install -y geary hunspell-es
 
 ## Development Languages and frameworks
 apt install -y golang hugo
+
+## Android tools
+apt install -y android-tools-adb apkinfo apktool
+
+## Java JDK and more
+apt install -y default-jdk default-jre
+
+## Gradle compiler
+add-apt-repository ppa:cwchien/gradle
 ```
 
 ## Printers
