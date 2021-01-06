@@ -202,6 +202,9 @@ apt install -y default-jdk default-jre
 
 ## Gradle compiler
 add-apt-repository ppa:cwchien/gradle
+
+## Proxys
+apt install -y tor torbrowser-launcher torsocks tor proxychains proxytunnel
 ```
 
 ## Printers
