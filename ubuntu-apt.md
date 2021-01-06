@@ -188,6 +188,10 @@ curl wget whois telnet xscreensaver-gl xscreensaver-gl-extra golang-docker-crede
 
 ## Mail tools
 apt install -y geary hunspell-es
+
+## Development Languages and frameworks
+apt install -y golang hugo
+
 ```
 
 ## Printers
