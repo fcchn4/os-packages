@@ -205,6 +205,9 @@ add-apt-repository ppa:cwchien/gradle
 
 ## Proxys
 apt install -y tor torbrowser-launcher torsocks tor proxychains proxytunnel
+
+## Obs Studio
+apt install -y obs-studio obs-plugins
 ```
 
 ## Printers
