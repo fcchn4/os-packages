@@ -208,6 +208,9 @@ apt install -y tor torbrowser-launcher torsocks tor proxychains proxytunnel
 
 ## Obs Studio
 apt install -y obs-studio obs-plugins
+
+## Scan security server (rkhunter need postfix mail configuration)
+apt install -y lynis chkrootkit rkhunter
 ```
 
 ## Printers
