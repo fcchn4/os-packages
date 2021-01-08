@@ -52,6 +52,9 @@ apt install -y ubuntu-restricted-extras xubuntu-icon-theme
 
 ## Vim 
 apt install -y vim vim-scripts vim-syntax-docker vim-syntax-gtk
+
+## Sound tools
+apt install -y alsa-base alsa-firmware-loaders alsa-oss alsa-tools alsa-utils
 ```
 
 ## Uninstall snap
