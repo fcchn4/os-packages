@@ -214,6 +214,9 @@ apt install -y obs-studio obs-plugins
 
 ## Scan security server (rkhunter need postfix mail configuration)
 apt install -y lynis chkrootkit rkhunter
+
+## Python add
+apt install -y python3-virtualenv python3-pip
 ```
 
 ## Printers
