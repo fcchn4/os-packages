@@ -217,6 +217,9 @@ apt install -y lynis chkrootkit rkhunter
 
 ## Python add
 apt install -y python3-virtualenv python3-pip
+
+## Icons themes
+apt install -y adwaita-icon-theme-full 
 ```
 
 ## Printers
