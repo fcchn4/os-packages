@@ -219,7 +219,7 @@ apt install -y lynis chkrootkit rkhunter
 apt install -y python3-virtualenv python3-pip
 
 ## Icons themes
-apt install -y adwaita-icon-theme-full 
+apt install -y adwaita-icon-theme-full obsidian-icon-theme numix-icon-theme
 ```
 
 ## Printers
