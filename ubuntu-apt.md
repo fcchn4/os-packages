@@ -173,13 +173,10 @@ apt install hwinfo
 ## Tools for video
 apt install -y mesa-utils 
 
-## Network scan
-apt install -y iftop 
-
 ## Hacking tools
 apt install -y crunch speedtest-cli etherape ettercap-text-only aircrack-ng wireshark \
 nmap tcpdump testssl.sh stegosuite exiftool nikto whatweb sqlmap traceroute httrack \
-hydra hydra-gtk chkrootkit hping3 fping masscan
+hydra hydra-gtk chkrootkit hping3 fping masscan iftop
 
 ## Privileges
 adduser $(whoami) wireshark
