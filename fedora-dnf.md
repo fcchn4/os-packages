@@ -100,7 +100,7 @@ dnf install -y fedora-packager
 dnf groupinstall -y "Security Lab"
 
 ## Command
-dnf remove -y xfce4-terminal httpd security-menus
+dnf remove -y httpd security-menus
 ```
 
 ## Tools Essentials
