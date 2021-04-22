@@ -1,4 +1,4 @@
-# Fedora 32 Workstation Post Install 
+# Fedora XFCE Post Install 
 
 ## Repositories for Personal Desktop
 
@@ -9,15 +9,6 @@
 ```sh 
 ## Adding Official Repository
 dnf install -y fedora-workstation-repositories
-
-## List files
---> fedora-cisco-openh264.repo
---> fedora-modular.repo
---> fedora.repo
---> fedora-updates-modular.repo
---> fedora-updates.repo
---> fedora-updates-testing-modular.repo
---> fedora-updates-testing.repo
 ``` 
 
 **RPM Fusion Repository:**
@@ -27,14 +18,6 @@ dnf install -y fedora-workstation-repositories
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
 ## RPM Fusion Non Free
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-## List files   
---> rpmfusion-free.repo
---> rpmfusion-free-updates.repo
---> rpmfusion-free-updates-testing.repo
---> rpmfusion-nonfree.repo
---> rpmfusion-nonfree-updates.repo
---> rpmfusion-nonfree-updates-testing.repo
 ```
 
 **Updating**
@@ -123,10 +106,8 @@ dnf remove -y xfce4-terminal httpd security-menus
 ## Tools Essentials
 
 ```sh
-## Gnome Shell Tools
-dnf install -y gnome-shell-extension-refresh-wifi gnome-shell-extension-pomodoro \
-gnome-tweaks gnome-disk-utility gnome-shell-extension-user-theme gnome-documents \
-gnome-games gnome-firmware gnome-extensions-app
+## XFCE
+dnf install -y lightdm-gtk-greeter-settings.noarch
 
 ## Essentials packages for OS
 dnf install -y redhat-lsb-core vim-enhanced curl wget whois telnet nmap 
@@ -179,7 +160,7 @@ dnf install -y vinagre vino
 
 ```sh
 ## Sound and Video
-dnf install -y vlc soundconverter vokoscreen peek 
+dnf install -y vlc soundconverter peek 
 ```
 
 ### Graphics Design 
@@ -194,7 +175,7 @@ dia-electric2 dia-electronic dia-gnomeDIAicons dia-optics
 
 ```sh 
 ## Default Firefox and Chromium, Email Client
-dnf install -y firefox chromium-freeworld elinks geary 
+dnf install -y firefox chromium-freeworld elinks thunderbird thunderbird-enigmail 
 
 ## Add and install Google Chrome
 dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
@@ -232,7 +213,7 @@ dnf config-manager --add-repo https://download.virtualbox.org/virtualbox/rpm/fed
 dnf update -y 
 
 ## Install Virtualbox
-dnf install -y VirtualBox-6.0
+dnf install -y VirtualBox-6.1
 
 ## Add user on group
 usermod -a -G vboxusers $(whoami)
