@@ -1,0 +1,6 @@
+- block:
+  - name: Add Repository RPM Fusion
+    dnf: 
+
+  - name: Update Operating System
+    dnf: 
