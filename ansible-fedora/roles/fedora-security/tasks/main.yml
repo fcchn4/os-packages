@@ -1,0 +1,14 @@
+- block:
+  - name: Install Group Security Lab
+    dnf: 
+      name: "@Security Lab"
+      state: latest
+
+  - name: Remove Icons and Services
+    dnf:
+      name:
+        - httpd
+        - security-menus
+      state: absent
+      autoremove: yes
+

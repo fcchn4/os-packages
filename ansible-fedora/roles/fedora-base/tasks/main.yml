@@ -11,7 +11,7 @@
   - name: Install Workstation Repositorys
     dnf:
       name:
-      - fedora-workstation-repositories
+        - fedora-workstation-repositories
       state: latest
 
   - name: Upgrade All Packages
@@ -22,8 +22,8 @@
   - name: Install Packages for Kernel
     dnf: 
       name:
-      - kernel-headers
-      - kernel-devel
+        - kernel-headers
+        - kernel-devel
       state: latest
 
   - name: Install Packages Groups for OS
@@ -38,4 +38,8 @@
       name:
         - fedora-packager
       state: latest
+
+  - name: Execute autoremove
+    dnf:
+      autoremove: yes
       

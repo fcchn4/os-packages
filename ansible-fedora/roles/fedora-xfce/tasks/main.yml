@@ -1,0 +1,42 @@
+- block:
+  - name: Install Community Drivers for Video
+    dnf:
+      name:
+        - iucode-tool
+        - libva-intel-driver 
+        - xorg-x11-drv-intel 
+        - mesa-dri-drivers 
+        - mesa-libGLU
+      state: latest  
+
+  - name: Install Sensors Drivers
+    dnf:
+      name:
+        - lm_sensors 
+        - tuned 
+        - tuned-utils 
+        - tuned-gtk
+      state: latest
+
+  - name: Install Baterry Software
+    dnf:
+      name:
+        - acpi
+        - acpid
+        - acpitool
+
+  - name: Enable Daemon Tuned
+    ansible.builtin.systemd:
+      name: tuned
+      state: started
+      enabled: yes
+
+  - name: Enable Daemon ACPI
+    ansible.builtin.systemd: 
+      name: acpid
+      state: started
+      enabled: yes
+
+  - name: Detect Automatic Sensors
+    shell: sensors-detect --auto
+
