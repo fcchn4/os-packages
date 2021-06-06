@@ -39,6 +39,18 @@
         - fedora-packager
       state: latest
 
+  - name: Uninstall Packages
+    dnf: 
+      name: 
+        - xfburn
+        - geany
+        - pidgin
+        - claws-mail
+        - asunder
+        - parole
+        - pragha      
+      state: absent
+
   - name: Execute autoremove
     dnf:
       autoremove: yes
