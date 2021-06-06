@@ -27,6 +27,24 @@ dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-
 dnf update -y
 ```
 
+## Operating System Tools
+
+```sh
+## Kernel Add-ons
+dnf install -y kernel-headers
+dnf install -y kernel-devel
+dnf groupinstall -y "Development Tools"
+dnf groupinstall -y "Development Libraries"
+```
+
+## Maintainer Packages
+
+```sh
+## Packages for create RPM
+dnf groupinstall -y "RPM Development Tools"
+dnf install -y fedora-packager
+```
+
 ## Install Drivers  - Hardware Tools
 
 ```sh
@@ -37,24 +55,17 @@ dnf install -y iucode-tool
 dnf install -y libva-intel-driver xorg-x11-drv-intel mesa-dri-drivers mesa-libGLU
 
 ## Hardware Sensors
-dnf install -y lm_sensors tuned tuned-utils tuned-gtk acpi acpid acpitool
+dnf install -y lm_sensors tuned tuned-utils tuned-gtk
 
-## Commands
+## ACPI Tools
+dnf install -y acpi acpid acpitool
+
+## Detect sensors and enable daemons
 sensors-detect --auto
 systemctl enable tuned.service
 systemctl start tuned.service
 systemctl enable acpid.service
 systemctl start acpid.service
-```
-
-## Operating System Tools
-
-```sh
-## Kernel Add-ons
-dnf install -y kernel-headers
-dnf install -y kernel-devel
-dnf groupinstall -y "Development Tools" 
-dnf groupinstall -y "Development Libraries"
 ```
 
 ### Install NVIDIA Driver 390xxx
@@ -83,14 +94,6 @@ export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PROMPT_COMMAND='__git_ps1 "\[\033[01;33m\]\t\[\033[00m\] \[\033[01;31m\][\W]\[\033[00m\]" " \\\$ "'
-```
-
-## Maintainer Packages
-
-```sh
-## Packages for create RPM
-dnf groupinstall -y "RPM Development Tools"
-dnf install -y fedora-packager
 ```
 
 ## Security Group Packages

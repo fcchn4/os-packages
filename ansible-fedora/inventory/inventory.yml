@@ -1,0 +1,9 @@
+all:
+  children:
+    fedora:
+      hosts:
+        fc34:
+          ansible_host: 10.172.0.64
+          ansible_user: freddy
+          ansible_private_key_file: ~/.ssh/ssh-cluster
+          ansible_port: 22
