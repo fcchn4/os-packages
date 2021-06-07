@@ -110,7 +110,7 @@ dnf remove -y httpd security-menus
 
 ```sh
 ## XFCE
-dnf install -y lightdm-gtk-greeter-settings.noarch
+dnf install -y lightdm-gtk-greeter-settings
 
 ## Essentials packages for OS
 dnf install -y redhat-lsb-core vim-enhanced curl wget whois telnet nmap 

@@ -1,0 +1,171 @@
+- block:
+  - name: Essentials Tools 
+    dnf:
+      name:
+        - lightdm-gtk-greeter-settings
+        - redhat-lsb-core
+        - vim-enhanced 
+        - curl
+        - wget
+        - whois
+        - telnet
+        - nmap 
+        - git
+        - gitg
+        - nfs-utils
+        - ntfs-3g
+        - ntfsprogs
+        - parted
+        - gdisk
+        - gparted
+        - gpart
+        - exfat-utils
+        - fuse-exfat
+        - gstreamer1-plugins-base
+        - gstreamer1-plugin-openh264
+        - gstreamer1-libav
+        - gstreamer1-plugins-good
+        - gstreamer1-libav
+        - gstreamer1-plugins-bad-free
+        - gstreamer1-plugins-bad-freeworld
+        - gstreamer1-plugins-bad-free-extras
+        - gstreamer1-plugins-good-extras
+        - gstreamer1-plugins-ugly
+        - gstreamer1-plugins-ugly-free
+        - gstreamer1-libav
+        - gstreamer1-plugins-good-gtk
+        - gstreamer1-plugins-good-qt
+        - ffmpeg
+        - caca-utils
+        - gstreamer1
+        - faac
+        - faad2
+        - alsa-lib
+        - alsa-plugins-pulseaudio
+        - alsa-utils
+        - arduino
+        - fritzing
+        - arm-image-installer
+        - unrar
+        - p7zip
+        - p7zip-plugins
+        - unrar
+        - unzip
+        - java
+        - torbrowser-launcher
+        - torsocks
+        - tor
+        - htop
+        - gnome-system-monitor
+        - brasero
+        - pv
+        - youtube-dl
+        - dkms
+        - axel
+        - android-tools
+        - zsh
+        - smartmontools
+        - speedtest-cli
+        - gd
+        - golang
+        - putty
+        - pwgen
+        - rdesktop
+        - sl
+        - transmission
+        - hexchat
+        - intltool
+        - iotop
+        - itop
+        - keepassxc
+        - lua
+        - telegram-desktop
+        - testssl
+        - tmux
+        - terminator
+        - sqlitebrowser
+        - fdupes
+        - figlet
+        - mediainfo
+        - mediainfo-gui
+        - pdfmod
+        - httpd-tools
+        - httrack
+        - linkchecker
+        - ghex
+        - gqrx
+        - perl-Image-ExifTool
+        - glade
+        - python3-virtualenv
+        - vinagre
+        - vlc
+        - soundconverter
+        - peek
+        - cups
+        - cups-client
+        - cups-libs
+        - cups-pdf
+        - hplip
+        - hplip-libs
+      state: latest  
+  
+  - name: Graphics Design
+    dnf:
+      name: 
+        - gimp
+        - inkscape
+        - inkscape-psd
+        - inkscape-view
+        - blender
+        - dia
+        - dia-CMOS
+        - dia-Digital
+        - dia-electric2
+        - dia-electronic
+        - dia-gnomeDIAicons
+        - dia-optics
+      state: latest
+
+  - name: Web Browsers
+    dnf:
+      name:
+      - firefox
+      - chromium-freeworld
+      - elinks
+      - thunderbird
+      - thunderbird-enigmail
+      state: latest
+
+  - name: SSH Server
+    dnf:
+      name:
+        - openssh-askpass
+        - openssh-clients
+        - openssh-server
+        - openssh
+        - sshpass
+        - mosh
+      state: latest
+
+  - name: Virtualization KVM
+    dnf:
+      name: "@virtualization"
+      state: latest
+
+  - name: Virtualization Tools
+    dnf:
+      name:
+        - virt-install
+        - virt-manager
+        - virt-viewer
+        - virt-what
+        - bridge-utils
+        - VirtualBox
+      state: latest
+
+  - name: Install Google Chrome
+    dnf:
+      name: google-chrome
+      enablerepo: google-chrome 
+      state: latest
+

@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: True
+  roles:
+    - fedora-desktop
+    - fedora-desktop-packages

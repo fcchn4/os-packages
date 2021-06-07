@@ -25,10 +25,10 @@ $ ansible-playbook fedora-base.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
 ```
 
-For **fedora-xfce.yml**:
+For **fedora-desktop.yml**:
 
 ```bash
-$ ansible-playbook fedora-xfce.yml \
+$ ansible-playbook fedora-desktop.yml \
 --ask-become-pass \
 -i inventory/inventory.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
