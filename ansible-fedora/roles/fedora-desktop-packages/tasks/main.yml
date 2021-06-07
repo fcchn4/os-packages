@@ -133,7 +133,6 @@
       - chromium-freeworld
       - elinks
       - thunderbird
-      - thunderbird-enigmail
       state: latest
 
   - name: SSH Server
@@ -165,7 +164,7 @@
 
   - name: Install Google Chrome
     dnf:
-      name: google-chrome
+      name: google-chrome-stable
       enablerepo: google-chrome 
       state: latest
 
