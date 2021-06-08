@@ -4,3 +4,5 @@
   roles:
     - fedora-desktop
     - fedora-desktop-packages
+  vars: 
+    fedora_user: freddy

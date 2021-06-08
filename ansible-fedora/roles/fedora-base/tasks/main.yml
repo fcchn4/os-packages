@@ -5,8 +5,8 @@
         - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm
         - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm
       state: present
-    vars:
-      fedora_version: 34
+    #vars:
+    #  fedora_version: 34
     
   - name: Install Workstation Repositorys
     dnf:

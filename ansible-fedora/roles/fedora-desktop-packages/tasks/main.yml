@@ -168,3 +168,25 @@
       enablerepo: google-chrome 
       state: latest
 
+  - name: Enable SSH Daemon
+    ansible.builtin.systemd:
+      name: sshd
+      state: started
+      enabled: yes
+
+  - name: Add on Group TCPDUMP
+    shell: usermod -a -G tcpdump {{ fedora_user }}
+    #vars:
+    #  fedora_user: name_user
+
+  - name: Add on Group WIRESHARK
+    shell: usermod -a -G wireshark {{ fedora_user }}
+
+  - name: Add on Group VBOXUSERS
+    shell: usermod -a -G vboxusers {{ fedora_user }}
+
+  - name: Add on Group QEMU
+    shell: usermod -a -G qemu {{ fedora_user }}
+
+  - name: Add on Group LIBVIRT
+    shell: usermod -a -G libvirt {{ fedora_user }}

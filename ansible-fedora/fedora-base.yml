@@ -3,3 +3,5 @@
   become: True
   roles:
     - fedora-base
+  vars:
+    fedora_version: 34
