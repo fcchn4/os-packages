@@ -1,4 +1,26 @@
 - block:
+  - name: General Tools
+    dnf:
+      name: 
+        - mediainfo
+        - mediainfo-gui
+        - pdfmod
+        - httpd-tools
+        - httrack
+        - linkchecker
+        - ghex
+        - testssl
+        - perl-Image-ExifTool
+      state: latest
+
+  - name: Install Packages for Scan
+    dnf:
+      name:
+        - whois
+        - telnet
+        - nmap 
+      state: latest
+
   - name: Install Group Security Lab
     dnf: 
       name: "@Security Lab"
@@ -11,4 +33,12 @@
         - security-menus
       state: absent
       autoremove: yes
+
+  - name: Install Tor Tools
+    dnf:
+      name: 
+        - torbrowser-launcher
+        - torsocks
+        - tor
+      state: latest
 

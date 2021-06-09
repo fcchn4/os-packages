@@ -7,9 +7,110 @@
         - xorg-x11-drv-intel 
         - mesa-dri-drivers 
         - mesa-libGLU
-        - dnf-plugins-core
-      state: latest  
+        - intltool
+      state: latest
 
+  - name: Tools for Compress and Uncompress
+    dnf:
+      name:
+        - unrar
+        - p7zip
+        - p7zip-plugins
+        - unrar
+        - unzip
+      state: latest
+
+  - name: Basics Packages in General
+    dnf:
+      name:
+        - pwgen
+        - rdesktop
+        - hexchat
+        - axel
+        - android-tools
+        - zsh
+        - smartmontools
+        - dkms
+        - python3-virtualenv
+        - vinagre
+        - peek
+        - fdupes
+        - figlet
+        - sl
+        - transmission
+        - terminator
+        - dnf-plugins-core
+        - lightdm-gtk-greeter-settings
+        - redhat-lsb-core
+        - vim-enhanced 
+        - curl
+        - wget
+        - git
+        - gitg
+        - nfs-utils
+        - ntfs-3g
+        - ntfsprogs
+        - parted
+        - gdisk
+        - gparted
+        - gpart
+        - exfat-utils
+        - fuse-exfat
+        - htop
+        - gnome-system-monitor
+        - brasero
+        - pv
+        - speedtest-cli
+        - iotop
+        - itop
+        - keepassxc
+        - lua
+        - telegram-desktop
+        - tmux
+        - gqrx
+      state: latest
+
+  - name: Tools for Audio
+    dnf:
+      name:
+        - gstreamer1-plugins-base
+        - gstreamer1-plugin-openh264
+        - gstreamer1-libav
+        - gstreamer1-plugins-good
+        - gstreamer1-libav
+        - gstreamer1-plugins-bad-free
+        - gstreamer1-plugins-bad-freeworld
+        - gstreamer1-plugins-bad-free-extras
+        - gstreamer1-plugins-good-extras
+        - gstreamer1-plugins-ugly
+        - gstreamer1-plugins-ugly-free
+        - gstreamer1-libav
+        - gstreamer1-plugins-good-gtk
+        - gstreamer1-plugins-good-qt
+        - ffmpeg
+        - caca-utils
+        - gstreamer1
+        - faac
+        - faad2
+        - alsa-lib
+        - alsa-plugins-pulseaudio
+        - alsa-utils
+        - youtube-dl
+        - vlc
+        - soundconverter
+      state: latest
+
+  - name: Drivers and Tools for Printers
+    dnf:
+      name:
+        - cups
+        - cups-client
+        - cups-libs
+        - cups-pdf
+        - hplip
+        - hplip-libs
+      state: latest
+  
   - name: Install Sensors Drivers
     dnf:
       name:
