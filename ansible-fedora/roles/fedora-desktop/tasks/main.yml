@@ -126,6 +126,7 @@
         - acpi
         - acpid
         - acpitool
+      state: latest
 
   - name: Enable Daemon Tuned
     ansible.builtin.systemd:
