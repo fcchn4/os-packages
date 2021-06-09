@@ -41,3 +41,5 @@
   - name: Detect Automatic Sensors
     shell: sensors-detect --auto
 
+#  - name: Rename file Repository
+#    shell: mv /etc/yum.repos.d/_copr_phracek-PyCharm.repo /etc/yum.repos.d/PyCharm.repo

@@ -6,3 +6,5 @@
     - fedora-desktop-packages
   vars: 
     fedora_user: freddy
+    kernel_name: Linux          # $(uname -s)
+    hardware_machine: x86_64    # $(uname -m)
