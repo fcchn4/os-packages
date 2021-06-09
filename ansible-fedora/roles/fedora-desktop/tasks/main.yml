@@ -7,6 +7,7 @@
         - xorg-x11-drv-intel 
         - mesa-dri-drivers 
         - mesa-libGLU
+        - dnf-plugins-core
       state: latest  
 
   - name: Install Sensors Drivers

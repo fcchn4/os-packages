@@ -168,6 +168,62 @@
       enablerepo: google-chrome 
       state: latest
 
+  - name: Install MariaDB
+    dnf:
+      name: 
+        - mariadb-server
+        - mariadb-server-utils
+        - mycli
+      state: latest
+
+  - name: Import key VSCode
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://packages.microsoft.com/keys/microsoft.asc
+
+  - name: Create VSCode File
+    shell: sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
+  - name: Install VSCode
+    dnf:
+      name: 
+        - code
+      state: latest
+
+  - name: Add Docker Repository
+    get_url:
+      url: https://download.docker.com/linux/fedora/docker-ce.repo
+      dest: /etc/yum.repos.d/docer-ce.repo
+
+  - name: Install Docker Compose
+    shell: curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+  - name: Docker Compose permissions
+    shell: chmod +x /usr/local/bin/docker-compose
+
+  - name: Install Docker
+    dnf:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      state: latest
+
+  - name: Enable Docker Daemon
+    ansible.builtin.systemd:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: Add on Group Docker
+    shell: usermod -a -G docker {{ fedora_user }}
+
+  - name: Enable MariaDB Daemon
+    ansible.builtin.systemd:
+      name: mariadb
+      state: started
+      enabled: yes
+
   - name: Enable SSH Daemon
     ansible.builtin.systemd:
       name: sshd
