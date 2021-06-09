@@ -5,7 +5,7 @@ This ansible poroject is for automatic install on post-installation for Fedora O
 The project have three playbooks:
 
 - fedora-base.yml
-- fedora-xfce.yml
+- fedora-desktop.yml
 - fedora-security.yml
 
 ## Versions
