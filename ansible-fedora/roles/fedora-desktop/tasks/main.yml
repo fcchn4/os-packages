@@ -41,5 +41,13 @@
   - name: Detect Automatic Sensors
     shell: sensors-detect --auto
 
+  - name: New file Bashrc
+    template:
+      src: bashrc-git-ps1-v2
+      dest: /home/{{ fedora_user }}/.bashrc
+      owner: "{{ fedora_user }}"
+      group: "{{ fedora_user }}"
+      mode: "0644"
+
 #  - name: Rename file Repository
 #    shell: mv /etc/yum.repos.d/_copr_phracek-PyCharm.repo /etc/yum.repos.d/PyCharm.repo
