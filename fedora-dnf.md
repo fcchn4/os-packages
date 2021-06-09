@@ -1,4 +1,4 @@
-# Fedora XFCE Post Install 
+# Fedora 34 - XFCE Desktop Post Install 
 
 ## Repositories for Personal Desktop
 
@@ -6,14 +6,14 @@
 
 **Fedora Official Repository:**
 
-```sh 
+```bash 
 ## Adding Official Repository
 dnf install -y fedora-workstation-repositories
 ``` 
 
 **RPM Fusion Repository:**
 
-```sh
+```bash
 ## RPM Fusion Free
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
 ## RPM Fusion Non Free
@@ -83,17 +83,6 @@ dnf install xorg-x11-drv-nvidia-390xx-cuda
 
 ## Test Driver
 dnf install -y gwe lshw libdazzle
-```
-
-### Prompt Git
-
-```bash
-## Prompt Git custom on local user directory ~/bashrc
-source /usr/share/git-core/contrib/completion/git-prompt.sh
-export GIT_PS1_SHOWCOLORHINTS=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export PROMPT_COMMAND='__git_ps1 "\[\033[01;33m\]\t\[\033[00m\] \[\033[01;31m\][\W]\[\033[00m\]" " \\\$ "'
 ```
 
 ## Security Group Packages

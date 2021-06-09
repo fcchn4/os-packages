@@ -107,6 +107,7 @@
         - cups-pdf
         - hplip
         - hplip-libs
+        - php-cli
       state: latest  
   
   - name: Graphics Design

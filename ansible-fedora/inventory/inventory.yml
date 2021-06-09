@@ -3,7 +3,7 @@ all:
     fedora:
       hosts:
         fc34:
-          ansible_host: 10.172.0.64
-          ansible_user: freddy
-          ansible_private_key_file: ~/.ssh/ssh-cluster
-          ansible_port: 22
+          ansible_host: "{{ fedora_host }}"
+          ansible_user: "{{ fedora_user }}"
+          ansible_private_key_file: "{{ fedora_private_key_file }}"
+          ansible_port: "{{ fedora_port }}"

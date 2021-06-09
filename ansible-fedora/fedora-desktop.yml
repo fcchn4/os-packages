@@ -5,6 +5,10 @@
     - fedora-desktop
     - fedora-desktop-packages
   vars: 
-    fedora_user: freddy
+    fedora_user: fcch
     kernel_name: Linux          # $(uname -s)
     hardware_machine: x86_64    # $(uname -m)
+    fedora_version: 34
+    fedora_host: 10.172.0.64
+    fedora_private_key_file: ~/.ssh/demo-ssh
+    fedora_port: 22

@@ -1,4 +1,4 @@
-# OS Packages
+# Ansible Install Linux
 
 This repository contains a list of packages for Fedora, Debian, and Ubuntu distributions. It only contains a long list of packages for some GNU / Linux distributions.
 
