@@ -1,0 +1,26 @@
+- block:
+  - name: 
+    apt:
+      name:
+        - whois
+        - telnet 
+        - traceroute
+        - nmap
+        - bind9utils
+        - dnsutils
+        - htop
+        - rsync
+        - etherape
+        - ettercap-text-only
+        - mediainfo
+        - mediainfo-gui
+        - linkchecker
+        - testssl.sh
+        - wireshark
+        - stegosuite
+        - tcpdump
+      state: latest
+
+  - name: 
+
+ 
