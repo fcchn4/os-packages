@@ -11,13 +11,16 @@ deb http://ftp.br.debian.org/debian buster-updates main contrib non-free
 deb http://ftp.br.debian.org/debian buster-backports main contrib non-free
 deb http://security.debian.org/debian-security buster/updates main contrib non-free
 
+deb-src http://ftp.br.debian.org/debian buster main contrib non-free
+deb-src http://ftp.br.debian.org/debian buster-updates main contrib non-free
+deb-src http://ftp.br.debian.org/debian buster-backports main contrib non-free
+deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
+
 ## Multimedia Repository non-free
 deb http://www.deb-multimedia.org buster main non-free
 ``` 
 
-## Package List
-
-### Debian Base
+## Package List - Debian Base
 
 ```sh 
 ## Essentials packages for OS
@@ -55,14 +58,14 @@ arc-theme gnome-tweak-tool gnome-tweaks acpi acpid acpitool \
 software-properties-common dirmngr
 ```
 
-### SSH Server (Optional)
+## SSH Server (Optional)
 
 ```sh
 ## Remote connection SSH and mosh
 apt install -y ssh openssh-server openssh-client mosh
 ```
 
-### Firewall (Optional)
+## Firewall (Optional)
 
 ```sh
 ## Option 1
@@ -76,7 +79,7 @@ or
 apt install -y ufw gufw			
 ```
 
-### Vitualization
+## Vitualization
 
 ```sh
 ## KVM Virtualization
@@ -89,7 +92,7 @@ adduser $(whoami) libvirt-qemu
 adduser $(whoami) kvm
 ```
 
-### Web Server
+## Web Server
 
 ```sh
 ## Apache Web
@@ -103,7 +106,7 @@ or
 nginx nginx-extras
 ```
 
-### PHP
+## PHP
 
 ```sh
 ## First install
@@ -112,14 +115,14 @@ php-curl php-mysql php-zip libapache2-mod-php php-odbc php-pgsql \
 php-sqlite3 php-json php-readline php-gd  
 ```
 
-### Certificates SSL
+## Certificates SSL
 
 ```sh
 ## Certbot project
 apt install -y letsencrypt
 ```
 
-### Packages for multimedia
+## Packages for multimedia
 
 ```sh
 ## Codecs, Sound and Video
@@ -128,14 +131,14 @@ gstreamer1.0-pulseaudio vorbis-tools faac faad w64codecs ffmpeg ffmpeg2theora li
 libdvdread4
 ```
 
-### Fonts Typographics
+## Fonts Typographics
 
 ```sh
 ## Fonts for OS
 apt install -y ttf-mscorefonts-installer fonts-freefont-ttf fonts-freefont-otf
 ```
 
-### Graphics Design 
+## Graphics Design 
 
 ```sh 
 ## Editor images
@@ -143,14 +146,14 @@ apt install -y gimp gimp-data-extras inkscape inkscape-open-symbols sozi dia \
 dia-rib-network dia-shapes dia-common
 ```
 
-### Web Browsers 
+## Web Browsers 
 
 ```sh 
 ## Chromium
 apt install -y chromium chromium-l10n
 ```
 
-### Additional Packages
+## Additional Packages
 
 ```sh
 apt install -y ghex gqrx-sdr peek vokoscreen stegosuite etherape ettercap-text-only \
