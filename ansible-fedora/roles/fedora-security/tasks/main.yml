@@ -1,5 +1,5 @@
 - block:
-  - name: General Tools
+  - name: GENERAL SECURITY TOOLS
     dnf:
       name: 
         - mediainfo
@@ -13,7 +13,7 @@
         - perl-Image-ExifTool
       state: latest
 
-  - name: Install Packages for Scan
+  - name: INSTALL PACKAGES FOR SCAN
     dnf:
       name:
         - whois
@@ -21,12 +21,12 @@
         - nmap 
       state: latest
 
-  - name: Install Group Security Lab
+  - name: INSTALL GROUP SECURITY LAB
     dnf: 
       name: "@Security Lab"
       state: latest
 
-  - name: Remove Icons and Services
+  - name: REMOVE ICONS AND SERVICES
     dnf:
       name:
         - httpd
@@ -34,7 +34,7 @@
       state: absent
       autoremove: yes
 
-  - name: Install Tor Tools
+  - name: INSTALL TOR TOOLS
     dnf:
       name: 
         - torbrowser-launcher
@@ -42,3 +42,10 @@
         - tor
       state: latest
 
+  - name: ADD ON GROUP TCPDUMP
+    shell: usermod -a -G tcpdump {{ fedora_user }}
+    #vars:
+    #  fedora_user: name_user
+
+  - name: ADD ON GROUP WIRESHARK
+    shell: usermod -a -G wireshark {{ fedora_user }}

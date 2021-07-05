@@ -1,5 +1,5 @@
 - block:
-  - name: Add RPM Fusion Repositorys
+  - name: INSTALL RPM FUSION REPOSITORYS
     dnf:
       name: 
         - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm
@@ -8,38 +8,38 @@
     #vars:
     #  fedora_version: 34
     
-  - name: Install Workstation Repositorys
+  - name: INSTALL WORKSTATION REPOSITORYS
     dnf:
       name:
         - fedora-workstation-repositories
       state: latest
 
-  - name: Upgrade All Packages
+  - name: UPGRADE ALL PACKAGES
     dnf:
       name: "*"
       state: latest
 
-  - name: Install Packages for Kernel
+  - name: INSTALL PACKAGES FOR KERNEL
     dnf: 
       name:
         - kernel-headers
         - kernel-devel
       state: latest
 
-  - name: Install Packages Groups for OS
+  - name: INSTALL PACKAGES GROUPS FOR OS
     dnf:
       name: 
         - "@Development Tools"
         - "@Development Libraries"
         - "@RPM Development Tools"
         
-  - name: Install Useful Packages
+  - name: INSTALL USEFUL PACKAGES
     dnf:
       name:
         - fedora-packager
       state: latest
 
-  - name: Uninstall Packages
+  - name: UNINSTALL DEFAULT PACKAGES
     dnf: 
       name: 
         - xfburn
@@ -51,7 +51,7 @@
         - pragha      
       state: absent
 
-  - name: Execute autoremove
+  - name: EXECUTE AUTOREMOVE COMMAND
     dnf:
       autoremove: yes
       

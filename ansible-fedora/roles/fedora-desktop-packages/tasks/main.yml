@@ -1,5 +1,5 @@
 - block:
-  - name: Arduino, Raspberry
+  - name: TOOLS FOR ARDUINO, RASPBERRY
     dnf:
       name:
         - arduino
@@ -7,7 +7,7 @@
         - arm-image-installer
       state: latest
 
-  - name: Development and Languages of Programming
+  - name: DEVELOPMENT, LANGUAGES AND FRAMEWORKS OF PROGRAMMING
     dnf:
       name:
         - sqlitebrowser
@@ -16,9 +16,10 @@
         - java
         - golang
         - gd
+        - hugo
       state: latest
 
-  - name: Graphics Design
+  - name: GRAPHICS DESIGN
     dnf:
       name: 
         - gimp
@@ -33,9 +34,10 @@
         - dia-electronic
         - dia-gnomeDIAicons
         - dia-optics
+        - google-noto-sans-mono-fonts
       state: latest
 
-  - name: Web Browsers
+  - name: WEB BROWSERS
     dnf:
       name:
       - firefox
@@ -44,7 +46,13 @@
       - thunderbird
       state: latest
 
-  - name: SSH Server
+  - name: INSTALL GOOGLE CHROME
+    dnf:
+      name: google-chrome-stable
+      enablerepo: google-chrome 
+      state: latest
+
+  - name: SSH SERVER
     dnf:
       name:
         - openssh-askpass
@@ -56,12 +64,12 @@
         - putty
       state: latest
 
-  - name: Virtualization KVM
+  - name: KVM VIRTUALIZATION
     dnf:
       name: "@virtualization"
       state: latest
 
-  - name: Virtualization Tools
+  - name: VIRTUALIZATION TOOLS
     dnf:
       name:
         - virt-install
@@ -72,13 +80,7 @@
         - VirtualBox
       state: latest
 
-  - name: Install Google Chrome
-    dnf:
-      name: google-chrome-stable
-      enablerepo: google-chrome 
-      state: latest
-
-  - name: Install MariaDB
+  - name: INSTALL MARIADB
     dnf:
       name: 
         - mariadb-server
@@ -86,32 +88,32 @@
         - mycli
       state: latest
 
-  - name: Import key VSCode
+  - name: IMPORT KEY VSCODE
     ansible.builtin.rpm_key:
       state: present
       key: https://packages.microsoft.com/keys/microsoft.asc
 
-  - name: Create VSCode File
+  - name: CREATE VSCODE FILE
     shell: sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
-  - name: Install VSCode
+  - name: INSTALL VSCODE
     dnf:
       name: 
         - code
       state: latest
 
-  - name: Add Docker Repository
+  - name: ADD DOCKER REPOSITORY
     get_url:
       url: https://download.docker.com/linux/fedora/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
 
-  - name: Install Docker Compose
+  - name: INSTALL DOCKER COMPOSE
     get_url:
       url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
       dest: /usr/local/bin/docker-compose 
       mode: "0755"
 
-  - name: Install Docker
+  - name: INSTALL DOCKER
     dnf:
       name:
         - docker-ce
@@ -119,40 +121,32 @@
         - containerd.io
       state: latest
 
-  - name: Enable Docker Daemon
+  - name: ENABLE DOCKER DAEMON
     ansible.builtin.systemd:
       name: docker
       state: started
       enabled: yes
 
-  - name: Add on Group Docker
+  - name: ADD ON GROUP DOCKER
     shell: usermod -a -G docker {{ fedora_user }}
 
-  - name: Enable MariaDB Daemon
+  - name: ENABLE MARIADB DAEMON
     ansible.builtin.systemd:
       name: mariadb
       state: started
       enabled: yes
 
-  - name: Enable SSH Daemon
+  - name: ENABLE SSH DAEMON
     ansible.builtin.systemd:
       name: sshd
       state: started
       enabled: yes
 
-  - name: Add on Group TCPDUMP
-    shell: usermod -a -G tcpdump {{ fedora_user }}
-    #vars:
-    #  fedora_user: name_user
-
-  - name: Add on Group WIRESHARK
-    shell: usermod -a -G wireshark {{ fedora_user }}
-
-  - name: Add on Group VBOXUSERS
+  - name: ADD ON GROUP VBOXUSERS
     shell: usermod -a -G vboxusers {{ fedora_user }}
 
-  - name: Add on Group QEMU
+  - name: ADD ON GROUP QEMU
     shell: usermod -a -G qemu {{ fedora_user }}
 
-  - name: Add on Group LIBVIRT
+  - name: ADD ON GROUP LIBVIRT
     shell: usermod -a -G libvirt {{ fedora_user }}

@@ -1,5 +1,5 @@
 - block:
-  - name: Install Community Drivers for Video
+  - name: INSTALL COMMUNITY DRIVERS FOR VIDEO INTEL
     dnf:
       name:
         - iucode-tool
@@ -10,7 +10,7 @@
         - intltool
       state: latest
 
-  - name: Tools for Compress and Uncompress
+  - name: TOOLS FOR COMPRESS AND UNCOMPRESS
     dnf:
       name:
         - unrar
@@ -20,7 +20,7 @@
         - unzip
       state: latest
 
-  - name: Basics Packages in General
+  - name: BASICS PACKAGES IN GENERAL
     dnf:
       name:
         - pwgen
@@ -70,7 +70,7 @@
         - gqrx
       state: latest
 
-  - name: Tools for Audio
+  - name: TOOLS FOR AUDIO
     dnf:
       name:
         - gstreamer1-plugins-base
@@ -100,7 +100,7 @@
         - soundconverter
       state: latest
 
-  - name: Drivers and Tools for Printers
+  - name: DRIVERS AND TOOLS FOR PRINTERS
     dnf:
       name:
         - cups
@@ -111,7 +111,7 @@
         - hplip-libs
       state: latest
   
-  - name: Install Sensors Drivers
+  - name: INSTALL SENSORS DRIVERS
     dnf:
       name:
         - lm_sensors 
@@ -120,7 +120,7 @@
         - tuned-gtk
       state: latest
 
-  - name: Install Baterry Software
+  - name: INSTALL BATERRY SOFTWARE
     dnf:
       name:
         - acpi
@@ -128,24 +128,24 @@
         - acpitool
       state: latest
 
-  - name: Enable Daemon Tuned
+  - name: ENABLE DAEMON TUNED
     ansible.builtin.systemd:
       name: tuned
       state: started
       enabled: yes
 
-  - name: Enable Daemon ACPI
+  - name: ENABLE DAEMON ACPI
     ansible.builtin.systemd: 
       name: acpid
       state: started
       enabled: yes
 
-  - name: Detect Automatic Sensors
+  - name: DETECT AUTOMATIC SENSORS
     shell: sensors-detect --auto
 
-  - name: New file Bashrc
+  - name: NEW FILE BASHRC
     template:
-      src: bashrc-git-ps1-v2
+      src: bashrc-git-ps1-v3
       dest: /home/{{ fedora_user }}/.bashrc
       owner: "{{ fedora_user }}"
       group: "{{ fedora_user }}"
