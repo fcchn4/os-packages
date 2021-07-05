@@ -4,9 +4,9 @@ This repository contains a list of packages for Fedora, Debian, and Ubuntu distr
 
 ## List
 
-1. [Debian](debian-apt.md) - [Ansible Debian](ansible-debian/)
-2. [Fedora](fedora-dnf.md) - [Ansible Fedora](ansible-fedora/)
-3. [Ubuntu](ubuntu-apt.md) - [Ansible Ubuntu](ansible-ubuntu)
+1. [Debian](ansible-debian/debian-apt.md) - [Ansible Debian](ansible-debian/)
+2. [Fedora](ansible-fedora/fedora-dnf.md) - [Ansible Fedora](ansible-fedora/)
+3. [Ubuntu](ansible-ubuntu/ubuntu-apt.md) - [Ansible Ubuntu](ansible-ubuntu)
 
 ## Versions 
 
