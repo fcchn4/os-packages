@@ -1,9 +1,9 @@
 all:
   children:
-    debian:
+    ubuntu:
       hosts:
-        buster:
-          ansible_host: "{{ debian_host }}"
-          ansible_user: "{{ debian_user }}"
-          ansible_private_key_file: "{{ debian_private_key_file }}"
-          ansible_port: "{{ debian_port }}"
+        focal:
+          ansible_host: "{{ ubuntu_host }}"
+          ansible_user: "{{ ubuntu_user }}"
+          ansible_private_key_file: "{{ ubuntu_private_key_file }}"
+          ansible_port: "{{ ubuntu_port }}"

@@ -2,6 +2,22 @@
 
 Configuration for Operating System Ubuntu 20.04 with Open Source Desktop XFCE4.
 
+## Pre-Requisites
+
+First we must manually execute the following commands on the computer where the installation will take place:
+
+```bash
+$ sudo apt update
+$ sudo apt install -y openssh-server
+$ sudo systemctl enable --now ssh.service
+```
+
+Then we must copy a public SSH key on the computer where the installations will be executed:
+
+```bash
+$ ssh-copy-id -o PubkeyAuthentication=no -i ~/.ssh/demo-ssh.pub user_name@ip_address_or_localhost
+```
+
 ## Sources List 
 
 ```bash

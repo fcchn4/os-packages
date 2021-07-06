@@ -3,28 +3,18 @@
     template:
       src: sources.list
       dest: /etc/apt/sources.list
-      owner: "{{ debian_user }}"
-      group: "{{ debian_user }}"
+      owner: "root"
+      group: "root"
       mode: "0644"
 
   - name: CUSTOM BASHRC
     template:
       src: bashrc
       dest: .bashrc
-      owner: "{{ debian_user }}"
-      group: "{{ debian_user }}"
+      owner: "{{ ubuntu_user }}"
+      group: "{{ ubuntu_user }}"
       mode: "0644"
   
-  - name: INSTALL DEB-MULTIMEDIA KEYRING
-    apt:
-      deb: http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
-
-  - name: DEB-MULTIMEDIA REPOSITORY
-    apt_repository:
-      repo: deb http://www.deb-multimedia.org {{ debian_version }} main non-free
-      filename: deb-multimedia
-      state:  present
-
   - name: ADD MARIADB KEYRING
     apt_key:
       url: https://mariadb.org/mariadb_release_signing_key.asc
@@ -32,13 +22,13 @@
   
   - name: ADD MARIADB REPOSITORY
     apt_repository:
-      repo: deb [arch=amd64] http://ftp.icm.edu.pl/pub/unix/database/mariadb/repo/10.4/debian {{ debian_version }} main
+      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 
   - name: ADD MARIADB SRC REPOSITORY
     apt_repository:
-      repo: deb-src [arch=amd64] http://ftp.icm.edu.pl/pub/unix/database/mariadb/repo/10.4/debian {{ debian_version }} main
+      repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 
@@ -49,24 +39,24 @@
 
   - name: ADD VIRTUALBOX REPOSITORY
     apt_repository:
-      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ debian_version }} contrib
+      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ubuntu_version }} contrib
       filename: virtualbox
       state: present
 
   - name: DOCKER GPG
     apt_key:
-      url: https://download.docker.com/linux/debian/gpg
+      url: https://download.docker.com/linux/ubuntu/gpg
       keyring: /usr/share/keyrings/docker-archive-keyring.gpg
       state: present
 
   - name: DOCKER CE
     apt_repository:
-      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian {{ debian_version }} stable
+      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ubuntu_version }} stable
       filename: docker-ce
       state: present
 
   - name: TYPORA KEYRING
-    apt_key: 
+    apt_key:
       url: https://typora.io/linux/public-key.asc
       state: present
 
@@ -95,13 +85,13 @@
 
   - name: NODEJS
     apt_repository:
-      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ debian_version }} main
+      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ ubuntu_version }} main
       filename: nodesource
       state: present
 
   - name: NODEJS SRC
     apt_repository:
-      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ debian_version }} main
+      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ ubuntu_version }} main
       filename: nodesource
       state: present
 
@@ -115,6 +105,17 @@
     apt_repository:
       repo: deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main
       filename: yarn
+      state: present
+
+  - name: TERRAFORM KEY
+    apt_key:
+      url: https://apt.releases.hashicorp.com/gpg
+      state: present
+
+  - name: TERRAFORM
+    apt_repository:
+      repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ubuntu_version }} main
+      filename: hashicorp
       state: present
 
   - name: UPDATE CACHE
@@ -156,11 +157,12 @@
       name:
         - vim-tiny
         - xfburn
-        - xsane
-        - exfalso
-        - parole
-        - xterm
-        - quodlibet
+        - gnome-mines
+        - gnome-sudoku
+        - sgt-puzzles
+        - simple-scan
+        - pidgin
+        - snapd
       state: absent
 
   - name: UNINSTALL UNNECESSARY PACKAGES

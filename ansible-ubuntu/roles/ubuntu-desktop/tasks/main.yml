@@ -11,21 +11,21 @@
         - linux-headers-{{ kernel_version_output.stdout }}
       state: latest
   
+  - name: UBUNTU META PACKAGE
+    apt:
+      name:
+        - ubuntu-restricted-extras
+        - xubuntu-icon-theme
+        - adwaita-icon-theme-full
+        - obsidian-icon-theme
+      state: latest
+
   - name: INSTALL INTEL TOOLS AND SENSORS
     apt:
       name:
         - intel-microcode
         - intel-gpu-tools
-        - inteltool
         - lm-sensors
-      state: latest
-
-  - name: INSTALL FIRMWARE META PACKAGES
-    apt:
-      name:
-        - firmware-linux
-        - firmware-linux-free
-        - firmware-linux-nonfree
       state: latest
 
   - name: PACKAGES COMPRESS AND UNCOMPRESS
@@ -53,7 +53,7 @@
         - xz-utils
       state: latest
 
-  - name: BATERY STATUS
+  - name: TOOLS FOR BATERY AND OS
     apt:
       name:
         - acpi
@@ -78,7 +78,32 @@
         - hardinfo
         - tmux
         - terminator
+        - vim-scripts
+        - vim-syntax-docker
+        - vim-syntax-gtk
+        - hwinfo
+        - telegram-desktop
+        - transmission
+        - cheese
+        - figlet
+        - xscreensaver-gl
+        - xscreensaver-gl-extra
+        - keepassxc
+        - gromit-mpx
+        - hunspell-es
       state: latest
+
+  - name: HDD TOOLS
+    apt:
+      name:
+        - gparted
+        - gpart
+        - parted
+        - ntfs-3g
+        - exfat-fuse
+        - exfat-utils
+      state: latest
+ 
 
   - name: SSH SERVER
     apt:
@@ -88,6 +113,10 @@
         - openssh-server
         - openssh-client
         - mosh
+        - putty
+        - putty-tools
+        - ssh-askpass
+        - ssh-askpass-gnome
       state: latest
 
   - name: FIREWALL
@@ -106,9 +135,16 @@
         - vorbis-tools
         - faac
         - faad
-        - w64codecs
         - ffmpeg
         - ffmpeg2theora
+        - alsa-base
+        - alsa-firmware-loaders
+        - alsa-oss
+        - alsa-tools
+        - alsa-utils
+        - mesa-utils
+        - obs-studio
+        - obs-plugins
       state: latest
 
   - name: FONTS TYPOGRAPHICS
@@ -119,7 +155,7 @@
         - fonts-freefont-otf
       state: latest
 
-  - name: GRAPHICS DESIGN
+  - name: GRAPHICS DESIGN AND IMAGE EDIT
     apt:
       name:
         - gimp
@@ -131,13 +167,22 @@
         - dia-shapes
         - dia-common
         - peek
+        - blender
+        - blender-ogrexml-1.9
+        - optipng
+        - imagemagick
       state: latest
 
-  - name: WEB BROWSERS
+  - name: PRINTES TOOLS
     apt:
       name:
-        - chromium
-        - chromium-l10n
+        - cups
+        - cups-core-drivers
+        - cups-filters
+        - cups-filters-core-drivers
+        - cups-ipp-utils
+        - hplip
+        - hplip-data
       state: latest
 
   - name: GOOGLE CHROME
@@ -159,6 +204,11 @@
     apt:
       name: code
       state: latest
+
+  - name: TYPORA
+    apt:
+      name: typora
+      state: latest
       
   - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
     apt:
@@ -167,6 +217,11 @@
         - nodejs
         - yarn
         - golang
+        - jq
+        - default-jdk
+        - default-jre
+        - python3-virtualenv
+        - python3-pip
       state: latest
 
   - name: KVM VIRTUALIZATION
@@ -193,6 +248,20 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io
+        - golang-docker-credential-helpers
+      state: latest
+
+  - name: VAGRANT
+    apt:
+      name:
+        - vagrant
+        - vagrant-digitalocean
+        - vagrant-libvirt
+      state: latest
+
+  - name: ANSIBLE
+    apt:
+      name: ansible
       state: latest
 
   - name: GET KERNEL NAME
@@ -242,7 +311,6 @@
 
   - name: ADD USER ON GROUPS
     user:
-      name: "{{ debian_user }}"
-      #shell: /bin/bash
+      name: "{{ ubuntu_user }}"
       groups: adm,docker,input,kvm,libvirt,libvirt-qemu,vboxusers
       append: yes
