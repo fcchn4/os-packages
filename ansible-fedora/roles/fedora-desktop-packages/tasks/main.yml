@@ -88,30 +88,11 @@
         - mycli
       state: latest
 
-  - name: IMPORT KEY VSCODE
-    ansible.builtin.rpm_key:
-      state: present
-      key: https://packages.microsoft.com/keys/microsoft.asc
-
-  - name: CREATE VSCODE FILE
-    shell: sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-
   - name: INSTALL VSCODE
     dnf:
       name: 
         - code
       state: latest
-
-  - name: ADD DOCKER REPOSITORY
-    get_url:
-      url: https://download.docker.com/linux/fedora/docker-ce.repo
-      dest: /etc/yum.repos.d/docker-ce.repo
-
-  - name: INSTALL DOCKER COMPOSE
-    get_url:
-      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
-      dest: /usr/local/bin/docker-compose 
-      mode: "0755"
 
   - name: INSTALL DOCKER
     dnf:
@@ -120,6 +101,12 @@
         - docker-ce-cli
         - containerd.io
       state: latest
+
+  - name: INSTALL DOCKER COMPOSE
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
+      dest: /usr/local/bin/docker-compose 
+      mode: "0755"
 
   - name: ENABLE DOCKER DAEMON
     ansible.builtin.systemd:

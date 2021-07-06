@@ -76,6 +76,8 @@
         - ethtool
         - mlocate
         - hardinfo
+        - tmux
+        - terminator
       state: latest
 
   - name: SSH SERVER
@@ -90,21 +92,7 @@
 
   - name: FIREWALL
     apt:
-      name:
-        - ufw
-      state: latest
-
-  - name: KVM VIRTUALIZATION
-    apt:
-      name:
-        - qemu-kvm
-        - qemu-utils
-        - libvirt-clients
-        - libvirt-daemon-system
-        - virt-viewer
-        - virt-what
-        - virtinst
-        - virt-manager
+      name: ufw
       state: latest
 
   - name: CODECS, SOUND AND VIDEO
@@ -115,8 +103,10 @@
         - gstreamer1.0-plugins-ugly
         - gstreamer1.0-plugins-bad
         - gstreamer1.0-pulseaudio
-        - vorbis-tools faac
-        - faad w64codecs
+        - vorbis-tools
+        - faac
+        - faad
+        - w64codecs
         - ffmpeg
         - ffmpeg2theora
       state: latest
@@ -165,6 +155,27 @@
         - arduino-core
       state: latest
 
+  - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
+    apt:
+      name:
+        - hugo
+        - nodejs
+        - yarn
+      state: latest
+
+  - name: KVM VIRTUALIZATION
+    apt:
+      name:
+        - qemu-kvm
+        - qemu-utils
+        - libvirt-clients
+        - libvirt-daemon-system
+        - virt-viewer
+        - virt-what
+        - virtinst
+        - virt-manager
+      state: latest
+  
   - name: VIRTUALBOX
     apt:
       name: virtualbox-6.1
@@ -177,3 +188,57 @@
         - docker-ce-cli
         - containerd.io
       state: latest
+
+  - name: INSTALL DOCKER COMPOSE
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
+      dest: /usr/local/bin/docker-compose 
+      mode: "0755"
+
+  - name: DETECT AUTOMATIC SENSORS
+    shell: sensors-detect --auto
+
+  - name: ENABLE DAEMON TUNED
+    ansible.builtin.systemd:
+      name: tuned
+      state: started
+      enabled: yes
+
+  - name: ENABLE DAEMON ACPI
+    ansible.builtin.systemd: 
+      name: acpid
+      state: started
+      enabled: yes
+
+  - name: ENABLE DAEMON LIBVIRT
+    ansible.builtin.systemd:
+      name: libvirtd
+      state: started
+      enabled: yes
+
+  - name: ENABLE DAEMON DOCKER
+    ansible.builtin.systemd:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: ADD USER ON GROUP ADM
+    shell: usermod -a -G adm {{ fedora_user }}
+
+  - name: ADD USER ON GROUP INPUT
+    shell: usermod -a -G input {{ fedora_user }}
+
+  - name: ADD USER ON GROUP KVM
+    shell: usermod -a -G kvm {{ fedora_user }}
+
+  - name: ADD USER ON GROUP LIBVIRT
+    shell: usermod -a -G libvirt {{ fedora_user }}
+
+  - name: ADD USER ON GROUP LIBVIRT-QEMU
+    shell: usermod -a -G libvirt-qemu {{ fedora_user }}
+
+  - name: ADD USER ON GROUP VBOXUSERS
+    shell: usermod -a -G vboxusers {{ fedora_user }}
+
+  - name: ADD USER ON GROUP DOCKER
+    shell: usermod -a -G docker {{ fedora_user }}

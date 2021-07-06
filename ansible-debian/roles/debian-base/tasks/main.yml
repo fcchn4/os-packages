@@ -87,6 +87,37 @@
       filename: vscode
       state: present
 
+  - name: NODEJS KEY
+    apt_key:
+      url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      keyring: /usr/share/keyrings/nodesource.gpg
+      state: present
+
+  - name: NODEJS
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ debian_version }} main
+      filename: nodesource
+      state: present
+
+  - name: NODEJS SRC
+    apt_repository:
+      repo: deb-src [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_14.x {{ debian_version }} main
+      filename: nodesource
+      state: present
+
+
+  - name: YARN KEY
+    apt_key:
+      url: https://dl.yarnpkg.com/debian/pubkey.gpg
+      keyring: /usr/share/keyrings/yarnkey.gpg
+      state: present
+
+  - name: YARN
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main
+      filename: yarn
+      state: present
+
   - name: UPDATE CACHE
     apt:
       update_cache: yes
@@ -117,6 +148,8 @@
         - git
         - dirmngr
         - software-properties-common
+        - gcc
+        - g++
       state: latest
 
   - name: UNINSTALL DEFAULT PACKAGES
