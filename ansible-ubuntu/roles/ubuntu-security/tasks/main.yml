@@ -1,0 +1,44 @@
+- block:
+  - name: DNS TOOLS
+    apt:
+      name:
+        - whois
+        - bind9utils
+        - dnsutils
+        - linkchecker
+        - testssl.sh        
+      state: latest
+
+  - name: SCANNERS
+    apt:
+      name: 
+        - traceroute
+        - nikto
+        - whatweb
+      state: latest
+
+  - name: NETWORKS TOOLS
+    apt:
+      name:
+        - telnet
+        - nmap
+        - etherape
+        - ettercap-text-only
+        - tcpdump
+        - wireshark
+      state: latest
+
+  - name: EXTRA TOOLS
+    apt:
+      name:
+        - htop
+        - mediainfo
+        - mediainfo-gui
+        - stegosuite
+      state: latest
+
+#  - name: ADD USER ON GROUPS
+#    user:
+#      name: "{{ debian_user }}"
+#      groups: tcpdump,wireshark
+#      append: yes

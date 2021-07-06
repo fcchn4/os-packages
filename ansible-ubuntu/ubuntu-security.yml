@@ -2,10 +2,11 @@
   - hosts: all
     become: True
     roles: 
-      - debian-base
+      - debian-security
     vars:
-      ubuntu_user: user_name
+      ubuntu_user: freddy
       ubuntu_version: buster
+      ubuntu_kernel_version: 4.19.0-11-amd64   # $(uname -r), get data from ansible project
       ubuntu_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
       ubuntu_private_key_file: ~/.ssh/fcch-ssh
       ubuntu_port: 22

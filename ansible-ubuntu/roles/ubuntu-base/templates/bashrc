@@ -128,12 +128,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# npm prefix
-NPM_CONFIG_PREFIX=~/.npm-global
-
-# fcch scripts 
-alias example="/route/app"
-
-# AWS Completer
-complete -C '/usr/local/bin/aws_completer' aws
