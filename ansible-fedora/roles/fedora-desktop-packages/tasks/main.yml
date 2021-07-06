@@ -17,6 +17,8 @@
         - golang
         - gd
         - hugo
+        - yarn
+        - nodejs:14
       state: latest
 
   - name: GRAPHICS DESIGN
@@ -128,11 +130,10 @@
       state: started
       enabled: yes
 
-  - name: ADD ON GROUP VBOXUSERS
-    shell: usermod -a -G vboxusers {{ fedora_user }}
-
-  - name: ADD ON GROUP QEMU
-    shell: usermod -a -G qemu {{ fedora_user }}
-
-  - name: ADD ON GROUP LIBVIRT
-    shell: usermod -a -G libvirt {{ fedora_user }}
+  - name: ADD USER ON GROUPS
+    ansible.builtin.user:
+      name: "{{ fedora_user }}"
+      #shell: /bin/bash
+      groups: vboxusers,qemu,libvirt
+      append: yes
+      

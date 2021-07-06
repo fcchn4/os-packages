@@ -28,7 +28,7 @@
         - firmware-linux-nonfree
       state: latest
 
-  - name: INSTALL PACKAGES FOR COMPRESS AND UNCOMPRESS
+  - name: PACKAGES COMPRESS AND UNCOMPRESS
     apt:
       name:
         - bzip2
@@ -166,6 +166,7 @@
         - hugo
         - nodejs
         - yarn
+        - golang
       state: latest
 
   - name: KVM VIRTUALIZATION
@@ -203,47 +204,33 @@
   - name: DETECT AUTOMATIC SENSORS
     shell: sensors-detect --auto
 
-  - name: ENABLE DAEMON TUNED
-    ansible.builtin.systemd:
+  - name: ENABLE DAEMONS
+    systemd:
       name: tuned
       state: started
       enabled: yes
 
   - name: ENABLE DAEMON ACPI
-    ansible.builtin.systemd: 
+    systemd: 
       name: acpid
       state: started
       enabled: yes
 
   - name: ENABLE DAEMON LIBVIRT
-    ansible.builtin.systemd:
+    systemd:
       name: libvirtd
       state: started
       enabled: yes
 
   - name: ENABLE DAEMON DOCKER
-    ansible.builtin.systemd:
+    systemd:
       name: docker
       state: started
       enabled: yes
 
-  - name: ADD USER ON GROUP ADM
-    shell: usermod -a -G adm {{ fedora_user }}
-
-  - name: ADD USER ON GROUP INPUT
-    shell: usermod -a -G input {{ fedora_user }}
-
-  - name: ADD USER ON GROUP KVM
-    shell: usermod -a -G kvm {{ fedora_user }}
-
-  - name: ADD USER ON GROUP LIBVIRT
-    shell: usermod -a -G libvirt {{ fedora_user }}
-
-  - name: ADD USER ON GROUP LIBVIRT-QEMU
-    shell: usermod -a -G libvirt-qemu {{ fedora_user }}
-
-  - name: ADD USER ON GROUP VBOXUSERS
-    shell: usermod -a -G vboxusers {{ fedora_user }}
-
-  - name: ADD USER ON GROUP DOCKER
-    shell: usermod -a -G docker {{ fedora_user }}
+  - name: ADD USER ON GROUPS
+    user:
+      name: "{{ debian_user }}"
+      #shell: /bin/bash
+      groups: adm,docker,input,kvm,libvirt,libvirt-qemu,vboxusers
+      append: yes

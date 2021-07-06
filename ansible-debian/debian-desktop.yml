@@ -10,3 +10,5 @@
       debian_host: 10.172.0.60
       debian_private_key_file: ~/.ssh/fcch-ssh
       debian_port: 22
+      kernel_name: Linux          # $(uname -s)
+      hardware_machine: x86_64    # $(uname -m)

@@ -21,6 +21,11 @@
       url: https://download.docker.com/linux/fedora/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
 
+  - name: REPO YARN
+    get_url:
+      url: https://dl.yarnpkg.com/rpm/yarn.repo
+      dest: /etc/yum.repos.d/yarn.repo
+
   - name: INSTALL WORKSTATION REPOSITORYS
     dnf:
       name: fedora-workstation-repositories

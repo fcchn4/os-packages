@@ -42,10 +42,9 @@
         - tor
       state: latest
 
-  - name: ADD ON GROUP TCPDUMP
-    shell: usermod -a -G tcpdump {{ fedora_user }}
-    #vars:
-    #  fedora_user: name_user
-
-  - name: ADD ON GROUP WIRESHARK
-    shell: usermod -a -G wireshark {{ fedora_user }}
+  - name: ADD USER ON GROUPS
+    ansible.builtin.user:
+      name: "{{ fedora_user }}"
+      #shell: /bin/bash
+      groups: tcpdump,wireshark
+      append: yes
