@@ -129,13 +129,13 @@
       state: latest
 
   - name: ENABLE DAEMON TUNED
-    ansible.builtin.systemd:
+    systemd:
       name: tuned
       state: started
       enabled: yes
 
   - name: ENABLE DAEMON ACPI
-    ansible.builtin.systemd: 
+    systemd: 
       name: acpid
       state: started
       enabled: yes

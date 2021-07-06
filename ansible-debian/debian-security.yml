@@ -6,7 +6,7 @@
     vars:
       debian_user: freddy
       debian_version: buster
-      debian_kernel_version: 4.19.0-11-amd64   # uname -r
-      debian_host: 10.172.0.60
+      debian_kernel_version: 4.19.0-11-amd64   # $(uname -r), get data from ansible project
+      debian_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
       debian_private_key_file: ~/.ssh/fcch-ssh
       debian_port: 22

@@ -195,9 +195,21 @@
         - containerd.io
       state: latest
 
+  - name: GET KERNEL NAME
+    shell: uname -s
+    register: kernel_name_output
+
+  - debug: msg="{{ kernel_name_output.stdout }}"
+
+  - name: GET HARDWARE MACHINE
+    shell: uname -m
+    register: kernel_machine_output
+
+  - debug: msg="{{ kernel_machine_output.stdout }}"
+
   - name: INSTALL DOCKER COMPOSE
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
+      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
       dest: /usr/local/bin/docker-compose 
       mode: "0755"
 

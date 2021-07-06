@@ -103,37 +103,48 @@
         - containerd.io
       state: latest
 
+  - name: GET KERNEL NAME
+    shell: uname -s
+    register: kernel_name_output
+
+  - debug: msg="{{ kernel_name_output.stdout }}"
+
+  - name: GET HARDWARE MACHINE
+    shell: uname -m
+    register: kernel_machine_output
+
+  - debug: msg="{{ kernel_machine_output.stdout }}"
+
   - name: INSTALL DOCKER COMPOSE
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name }}-{{ hardware_machine }}
+      url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
       dest: /usr/local/bin/docker-compose 
       mode: "0755"
 
   - name: ENABLE DOCKER DAEMON
-    ansible.builtin.systemd:
+    systemd:
       name: docker
       state: started
       enabled: yes
 
-  - name: ADD ON GROUP DOCKER
-    shell: usermod -a -G docker {{ fedora_user }}
-
   - name: ENABLE MARIADB DAEMON
-    ansible.builtin.systemd:
+    systemd:
       name: mariadb
       state: started
       enabled: yes
 
   - name: ENABLE SSH DAEMON
-    ansible.builtin.systemd:
+    systemd:
       name: sshd
       state: started
       enabled: yes
 
   - name: ADD USER ON GROUPS
-    ansible.builtin.user:
+    user:
       name: "{{ fedora_user }}"
       #shell: /bin/bash
-      groups: vboxusers,qemu,libvirt
+      groups: vboxusers,qemu,libvirt,docker
       append: yes
-      
+
+#  - name: ADD ON GROUP DOCKER
+#    shell: usermod -a -G docker {{ fedora_user }}

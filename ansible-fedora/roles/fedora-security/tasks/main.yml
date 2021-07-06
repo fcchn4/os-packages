@@ -43,7 +43,7 @@
       state: latest
 
   - name: ADD USER ON GROUPS
-    ansible.builtin.user:
+    user:
       name: "{{ fedora_user }}"
       #shell: /bin/bash
       groups: tcpdump,wireshark

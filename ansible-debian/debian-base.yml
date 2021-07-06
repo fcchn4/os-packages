@@ -4,8 +4,8 @@
     roles: 
       - debian-base
     vars:
-      debian_user: freddy
+      debian_user: user_name
       debian_version: buster
-      debian_host: 10.172.0.60
+      debian_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
       debian_private_key_file: ~/.ssh/fcch-ssh
       debian_port: 22
