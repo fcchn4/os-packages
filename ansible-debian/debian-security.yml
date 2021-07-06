@@ -1,7 +1,8 @@
 ---
   - hosts: all
     become: True
-    roles: debian-security
+    roles: 
+      - debian-security
     vars:
       debian_user: freddy
       debian_version: buster

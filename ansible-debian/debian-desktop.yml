@@ -1,7 +1,8 @@
 ---
   - hosts: all
     become: True
-    roles: debian-desktop
+    roles: 
+      - debian-desktop
     vars:
       debian_user: freddy
       debian_version: buster
