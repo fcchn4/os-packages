@@ -105,7 +105,6 @@
       filename: nodesource
       state: present
 
-
   - name: YARN KEY
     apt_key:
       url: https://dl.yarnpkg.com/debian/pubkey.gpg

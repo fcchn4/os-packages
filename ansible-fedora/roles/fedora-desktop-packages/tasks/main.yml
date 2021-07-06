@@ -90,8 +90,7 @@
 
   - name: INSTALL VSCODE
     dnf:
-      name: 
-        - code
+      name: code
       state: latest
 
   - name: INSTALL DOCKER

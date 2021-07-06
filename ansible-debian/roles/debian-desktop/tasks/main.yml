@@ -155,6 +155,11 @@
         - arduino-core
       state: latest
 
+  - name: INSTALL VSCODE
+    apt:
+      name: code
+      state: latest
+      
   - name: PROGRAMMING LANGUAGE AND FRAMEWORKS
     apt:
       name:

@@ -1,8 +1,7 @@
 ---
 - hosts: all
   become: True
-  roles:
-    - fedora-security
+  roles: fedora-security
   vars: 
     fedora_version: 34
     fedora_user: user_name

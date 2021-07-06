@@ -10,8 +10,8 @@
 
   - name: IMPORT KEY VSCODE
     ansible.builtin.rpm_key:
-      state: present
       key: https://packages.microsoft.com/keys/microsoft.asc
+      state: present
 
   - name: CREATE VSCODE FILE
     shell: sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -23,8 +23,7 @@
 
   - name: INSTALL WORKSTATION REPOSITORYS
     dnf:
-      name:
-        - fedora-workstation-repositories
+      name: fedora-workstation-repositories
       state: latest
 
   - name: UPGRADE ALL PACKAGES
@@ -45,11 +44,11 @@
         - "@Development Tools"
         - "@Development Libraries"
         - "@RPM Development Tools"
+      state: latest
         
   - name: INSTALL USEFUL PACKAGES
     dnf:
-      name:
-        - fedora-packager
+      name: fedora-packager
       state: latest
 
   - name: UNINSTALL DEFAULT PACKAGES

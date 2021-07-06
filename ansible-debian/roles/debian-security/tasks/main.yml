@@ -1,26 +1,38 @@
 - block:
-  - name: 
+  - name: DNS TOOLS
     apt:
       name:
         - whois
-        - telnet 
-        - traceroute
-        - nmap
         - bind9utils
         - dnsutils
-        - htop
-        - rsync
-        - etherape
-        - ettercap-text-only
-        - mediainfo
-        - mediainfo-gui
         - linkchecker
-        - testssl.sh
-        - wireshark
-        - stegosuite
-        - tcpdump
+        - testssl.sh        
       state: latest
 
-  - name: 
+  - name: SCANNERS
+    apt:
+      name: 
+        - traceroute
+        - nikto
+        - whatweb
+      state: latest
 
- 
+  - name: NETWORKS TOOLS
+    apt:
+      name:
+        - telnet
+        - nmap
+        - etherape
+        - ettercap-text-only
+        - tcpdump
+        - wireshark
+      state: latest
+
+  - name: EXTRA TOOLS
+    apt:
+      name:
+        - htop
+        - mediainfo
+        - mediainfo-gui
+        - stegosuite
+      state: latest
