@@ -118,6 +118,16 @@
       filename: hashicorp
       state: present
 
+  - name: POSTGRESQL KEY
+    apt_key:
+      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+      state: present
+
+  - name: POSTGESQL
+    apt_repository: deb http://apt.postgresql.org/pub/repos/apt {{ ubuntu_version }}-pgdg main
+    filename: pgdg
+    state: present
+
   - name: UPDATE CACHE
     apt:
       update_cache: yes

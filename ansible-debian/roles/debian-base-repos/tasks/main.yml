@@ -117,6 +117,17 @@
       filename: yarn
       state: present
 
+  - name: POSTGRESQL KEY
+    apt_key:
+      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+      state: present
+
+  - name: POSTGRESQL
+    apt_repository:
+      repo: deb http://apt.postgresql.org/pub/repos/apt {{ debian_version}}-pgdg main
+      filename: pgdg
+      state: present
+
   - name: UPDATE CACHE
     apt:
       update_cache: yes
