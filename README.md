@@ -13,3 +13,9 @@ This repository contains a list of packages for Fedora, Debian, and Ubuntu distr
 1. **Debian 10**
 2. **Fedora 34**
 3. **Ubuntu 20.04**
+
+## Packages Necessary
+
+```bash
+$ sudo apt install ansible 
+```

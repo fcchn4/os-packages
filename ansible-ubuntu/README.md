@@ -7,7 +7,7 @@ First we must manually execute the following commands on the computer where the 
 ```bash
 $ sudo apt update
 $ sudo apt install -y openssh-server
-$ sudo systemctl enable --now ssh.service
+$ sudo systemctl enable --now sshd.service
 ```
 
 Then we must copy a public SSH key on the computer where the installations will be executed:
@@ -17,6 +17,8 @@ $ ssh-copy-id -o PubkeyAuthentication=no -i ~/.ssh/demo-ssh.pub user_name@ip_add
 ```
 
 This ansible poroject is for automatic install on post-installation for Ubuntu Operating System.
+
+## Config Files and replace values
 
 The project have three playbooks:
 

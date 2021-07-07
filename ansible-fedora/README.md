@@ -16,6 +16,8 @@ $ ssh-copy-id -o PubkeyAuthentication=no -i ~/.ssh/demo-ssh.pub user_name@ip_add
 
 This ansible poroject is for automatic install on post-installation for Fedora Operating System.
 
+## Config Files and replace values
+
 The project have three playbooks:
 
 - fedora-base-repos.yml

@@ -289,7 +289,7 @@
     file:
       path: /home/{{ ubuntu_user }}/.config/terminator
       state: directory
-      mode: "0644"
+      mode: "0775"
       owner: "{{ ubuntu_user }}"
       group: "{{ ubuntu_user }}"
       recurse: yes
@@ -300,7 +300,7 @@
       dest: /home/{{ ubuntu_user }}/.config/terminator/config
       owner: "{{ ubuntu_user }}"
       group: "{{ ubuntu_user }}"
-      mode: "0644"
+      mode: "0664"
 
   - name: ENABLE DAEMONS
     systemd:

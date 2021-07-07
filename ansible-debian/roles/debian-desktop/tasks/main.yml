@@ -247,3 +247,20 @@
       #shell: /bin/bash
       groups: adm,docker,input,kvm,libvirt,libvirt-qemu,vboxusers
       append: yes
+
+  - name: CREATE FILE TERMINATOR
+    file:
+      path: /home/{{ debian_user }}/.config/terminator
+      state: directory
+      mode: "0775"
+      owner: "{{ debian_user }}"
+      group: "{{ debian_user }}"
+      recurse: yes
+
+  - name: ADD CONFIG FILE FOR TERMINATOR
+    template:
+      src: terminator-config
+      dest: /home/{{ debian_user }}/.config/terminator/config
+      owner: "{{ debian_user }}"
+      group: "{{ debian_user }}"
+      mode: "0664"

@@ -2,10 +2,10 @@
   - hosts: all
     become: True
     roles: 
-      - debian-base
+      - debian-base-repos
     vars:
       debian_user: user_name
       debian_version: buster
       debian_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
-      debian_private_key_file: ~/.ssh/fcch-ssh
+      debian_private_key_file: ~/.ssh/demo-ssh
       debian_port: 22

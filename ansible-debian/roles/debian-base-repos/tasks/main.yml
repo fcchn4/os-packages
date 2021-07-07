@@ -1,10 +1,10 @@
 - block:
-  - name: ADD SOURCES FILE REPOSITORYS
+  - name: SOURCES FILE REPOS
     template:
       src: sources.list
       dest: /etc/apt/sources.list
-      owner: "{{ debian_user }}"
-      group: "{{ debian_user }}"
+      owner: "root"
+      group: "root"
       mode: "0644"
 
   - name: CUSTOM BASHRC
@@ -15,39 +15,39 @@
       group: "{{ debian_user }}"
       mode: "0644"
   
-  - name: INSTALL DEB-MULTIMEDIA KEYRING
+  - name: DEB-MULTIMEDIA KEY
     apt:
       deb: http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
 
-  - name: DEB-MULTIMEDIA REPOSITORY
+  - name: DEB-MULTIMEDIA
     apt_repository:
       repo: deb http://www.deb-multimedia.org {{ debian_version }} main non-free
       filename: deb-multimedia
       state:  present
 
-  - name: ADD MARIADB KEYRING
+  - name: MARIADB KEY
     apt_key:
       url: https://mariadb.org/mariadb_release_signing_key.asc
       state: present
   
-  - name: ADD MARIADB REPOSITORY
+  - name: MARIADB
     apt_repository:
       repo: deb [arch=amd64] http://ftp.icm.edu.pl/pub/unix/database/mariadb/repo/10.4/debian {{ debian_version }} main
       filename: mariadb
       state: present
 
-  - name: ADD MARIADB SRC REPOSITORY
+  - name: MARIADB SRC
     apt_repository:
       repo: deb-src [arch=amd64] http://ftp.icm.edu.pl/pub/unix/database/mariadb/repo/10.4/debian {{ debian_version }} main
       filename: mariadb
       state: present
 
-  - name: ADD VIRTUALBOX KEYRING
+  - name: VIRTUALBOX KEY
     apt_key:
       url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
       state: present
 
-  - name: ADD VIRTUALBOX REPOSITORY
+  - name: VIRTUALBOX
     apt_repository:
       repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ debian_version }} contrib
       filename: virtualbox
@@ -65,7 +65,7 @@
       filename: docker-ce
       state: present
 
-  - name: TYPORA KEYRING
+  - name: TYPORA KEY
     apt_key: 
       url: https://typora.io/linux/public-key.asc
       state: present
@@ -76,7 +76,7 @@
       filename: typora
       state: present
 
-  - name: VSCODE KEYRING
+  - name: VSCODE KEY
     apt_key:
       url: https://packages.microsoft.com/keys/microsoft.asc
       state: present
@@ -127,7 +127,7 @@
       name: "*"
       state: latest
 
-  - name: INSTALL PACKAGES BASICS
+  - name: BASICS PACKAGES
     apt:
       name:
         - apt-transport-https
