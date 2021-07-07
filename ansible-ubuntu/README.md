@@ -20,7 +20,7 @@ This ansible poroject is for automatic install on post-installation for Fedora O
 
 The project have three playbooks:
 
-- ubuntu-base.yml
+- ubuntu-base-repos.yml
 - ubuntu-desktop.yml
 - ubuntu-security.yml
 
@@ -43,7 +43,7 @@ Execution order:
 1. **ubuntu-base.yml**:
 
 ```bash
-$ ansible-playbook ubuntu-base.yml \
+$ ansible-playbook ubuntu-base-repos.yml \
 --ask-become-pass \
 -i inventory/inventory.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"

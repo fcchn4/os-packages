@@ -2,7 +2,7 @@
   - hosts: all
     become: True
     roles: 
-      - ubuntu-base
+      - ubuntu-base-repos
     vars:
       ubuntu_user: user_name
       ubuntu_version: focal
