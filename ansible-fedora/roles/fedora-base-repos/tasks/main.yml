@@ -1,5 +1,5 @@
 - block:
-  - name: INSTALL RPM FUSION REPOSITORYS
+  - name: INSTALL RPM FUSION REPOS
     dnf:
       name: 
         - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm
@@ -8,15 +8,15 @@
     #vars:
     #  fedora_version: 34
 
-  - name: IMPORT KEY VSCODE
+  - name: VSCODE KEY
     ansible.builtin.rpm_key:
       key: https://packages.microsoft.com/keys/microsoft.asc
       state: present
 
-  - name: CREATE VSCODE FILE
+  - name: VSCODE REPO FILE
     shell: sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
-  - name: ADD DOCKER REPOSITORY
+  - name: DOCKER
     get_url:
       url: https://download.docker.com/linux/fedora/docker-ce.repo
       dest: /etc/yum.repos.d/docker-ce.repo
@@ -26,7 +26,7 @@
       url: https://dl.yarnpkg.com/rpm/yarn.repo
       dest: /etc/yum.repos.d/yarn.repo
 
-  - name: INSTALL WORKSTATION REPOSITORYS
+  - name: WORKSTATION REPOS
     dnf:
       name: fedora-workstation-repositories
       state: latest
@@ -71,4 +71,15 @@
   - name: EXECUTE AUTOREMOVE COMMAND
     dnf:
       autoremove: yes
+
+  - name: NEW FILE BASHRC
+    template:
+      src: bashrc-git-ps1-v3
+      dest: /home/{{ fedora_user }}/.bashrc
+      owner: "{{ fedora_user }}"
+      group: "{{ fedora_user }}"
+      mode: "0644"
+
+#  - name: Rename file Repository
+#    shell: mv /etc/yum.repos.d/_copr_phracek-PyCharm.repo /etc/yum.repos.d/PyCharm.repo
       

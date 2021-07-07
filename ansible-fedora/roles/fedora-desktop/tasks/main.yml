@@ -1,5 +1,5 @@
 - block:
-  - name: INSTALL COMMUNITY DRIVERS FOR VIDEO INTEL
+  - name: DRIVERS VIDEO INTEL
     dnf:
       name:
         - iucode-tool
@@ -10,7 +10,7 @@
         - intltool
       state: latest
 
-  - name: TOOLS FOR COMPRESS AND UNCOMPRESS
+  - name: TOOLS COMPRESS AND UNCOMPRESS
     dnf:
       name:
         - unrar
@@ -20,7 +20,7 @@
         - unzip
       state: latest
 
-  - name: BASICS PACKAGES IN GENERAL
+  - name: BASICS PACKAGES
     dnf:
       name:
         - pwgen
@@ -70,7 +70,7 @@
         - gqrx
       state: latest
 
-  - name: TOOLS FOR AUDIO
+  - name: AUDIO TOOLS
     dnf:
       name:
         - gstreamer1-plugins-base
@@ -100,7 +100,7 @@
         - soundconverter
       state: latest
 
-  - name: DRIVERS AND TOOLS FOR PRINTERS
+  - name: PRINTERS TOOLS
     dnf:
       name:
         - cups
@@ -111,7 +111,7 @@
         - hplip-libs
       state: latest
   
-  - name: INSTALL SENSORS DRIVERS
+  - name: SENSORS DRIVERS
     dnf:
       name:
         - lm_sensors 
@@ -120,7 +120,7 @@
         - tuned-gtk
       state: latest
 
-  - name: INSTALL BATERRY SOFTWARE
+  - name: SOFTWARE BATERRY
     dnf:
       name:
         - acpi
@@ -142,14 +142,3 @@
 
   - name: DETECT AUTOMATIC SENSORS
     shell: sensors-detect --auto
-
-  - name: NEW FILE BASHRC
-    template:
-      src: bashrc-git-ps1-v3
-      dest: /home/{{ fedora_user }}/.bashrc
-      owner: "{{ fedora_user }}"
-      group: "{{ fedora_user }}"
-      mode: "0644"
-
-#  - name: Rename file Repository
-#    shell: mv /etc/yum.repos.d/_copr_phracek-PyCharm.repo /etc/yum.repos.d/PyCharm.repo

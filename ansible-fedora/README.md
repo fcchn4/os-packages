@@ -1,10 +1,24 @@
-# Details
+# FEDORA INSTALL
+
+## Pre-Requisites
+
+First we must manually execute the following commands on the computer where the installation will take place:
+
+```bash
+$ sudo systemctl enable --now sshd.service
+```
+
+Then we must copy a public SSH key on the computer where the installations will be executed:
+
+```bash
+$ ssh-copy-id -o PubkeyAuthentication=no -i ~/.ssh/demo-ssh.pub user_name@ip_address_or_localhost
+```
 
 This ansible poroject is for automatic install on post-installation for Fedora Operating System.
 
 The project have three playbooks:
 
-- fedora-base.yml
+- fedora-base-repos.yml
 - fedora-desktop.yml
 - fedora-security.yml
 
@@ -16,16 +30,24 @@ The project have three playbooks:
 
 ## Commands
 
-For **fedora-base.yml**:
+First we are located on the route:
 
 ```bash
-$ ansible-playbook fedora-base.yml \
+$ cd ansible-fedora
+```
+
+Execution order:
+
+1. **fedora-base-repos.yml**:
+
+```bash
+$ ansible-playbook fedora-base-repos.yml \
 --ask-become-pass \
 -i inventory/inventory.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
 ```
 
-For **fedora-desktop.yml**:
+2. **fedora-desktop.yml**:
 
 ```bash
 $ ansible-playbook fedora-desktop.yml \
@@ -34,7 +56,7 @@ $ ansible-playbook fedora-desktop.yml \
 -e "ansible_python_interpreter=/usr/bin/python3"
 ```
 
-For **fedora-security.yml**:
+3. **fedora-security.yml**:
 
 ```bash
 $ ansible-playbook fedora-security.yml \

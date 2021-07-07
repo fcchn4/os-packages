@@ -10,6 +10,6 @@
     fedora_host: XXX.YYY.ZZZ.VVV    # IP Address or localhost
     fedora_private_key_file: ~/.ssh/demo-ssh
     fedora_port: 22
-    kernel_name: Linux          # $(uname -s), get data from ansible project, miss this task
-    hardware_machine: x86_64    # $(uname -m), get data from ansible project, miss this task
+    kernel_name: Linux          # $(uname -s)
+    hardware_machine: x86_64    # $(uname -m)
  

@@ -16,7 +16,7 @@ Then we must copy a public SSH key on the computer where the installations will 
 $ ssh-copy-id -o PubkeyAuthentication=no -i ~/.ssh/demo-ssh.pub user_name@ip_address_or_localhost
 ```
 
-This ansible poroject is for automatic install on post-installation for Fedora Operating System.
+This ansible poroject is for automatic install on post-installation for Ubuntu Operating System.
 
 The project have three playbooks:
 

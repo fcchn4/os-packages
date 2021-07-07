@@ -1,5 +1,5 @@
 - block:
-  - name: ADD SOURCES FILE REPOSITORYS
+  - name: ADD SOURCES FILE
     template:
       src: sources.list
       dest: /etc/apt/sources.list
@@ -15,29 +15,29 @@
       group: "{{ ubuntu_user }}"
       mode: "0644"
   
-  - name: ADD MARIADB KEYRING
+  - name: MARIADB KEY
     apt_key:
       url: https://mariadb.org/mariadb_release_signing_key.asc
       state: present
   
-  - name: ADD MARIADB REPOSITORY
+  - name: MARIADB
     apt_repository:
       repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 
-  - name: ADD MARIADB SRC REPOSITORY
+  - name: MARIADB SRC
     apt_repository:
       repo: deb [arch=amd64,arm64,ppc64el] https://mirror1.cl.netactuate.com/mariadb/repo/10.5/ubuntu {{ ubuntu_version }} main
       filename: mariadb
       state: present
 
-  - name: ADD VIRTUALBOX KEYRING
+  - name: VIRTUALBOX KEY
     apt_key:
       url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
       state: present
 
-  - name: ADD VIRTUALBOX REPOSITORY
+  - name: VIRTUALBOX
     apt_repository:
       repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ubuntu_version }} contrib
       filename: virtualbox
@@ -55,7 +55,7 @@
       filename: docker-ce
       state: present
 
-  - name: TYPORA KEYRING
+  - name: TYPORA KEY
     apt_key:
       url: https://typora.io/linux/public-key.asc
       state: present
@@ -66,7 +66,7 @@
       filename: typora
       state: present
 
-  - name: VSCODE KEYRING
+  - name: VSCODE KEY
     apt_key:
       url: https://packages.microsoft.com/keys/microsoft.asc
       state: present

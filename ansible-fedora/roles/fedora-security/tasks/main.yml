@@ -1,5 +1,5 @@
 - block:
-  - name: GENERAL SECURITY TOOLS
+  - name: SECURITY TOOLS
     dnf:
       name: 
         - mediainfo
@@ -13,7 +13,7 @@
         - perl-Image-ExifTool
       state: latest
 
-  - name: INSTALL PACKAGES FOR SCAN
+  - name: SCAN PACKAGES
     dnf:
       name:
         - whois
@@ -21,7 +21,7 @@
         - nmap 
       state: latest
 
-  - name: INSTALL GROUP SECURITY LAB
+  - name: GROUP SECURITY LAB
     dnf: 
       name: "@Security Lab"
       state: latest
@@ -34,7 +34,7 @@
       state: absent
       autoremove: yes
 
-  - name: INSTALL TOR TOOLS
+  - name: TOR TOOLS
     dnf:
       name: 
         - torbrowser-launcher

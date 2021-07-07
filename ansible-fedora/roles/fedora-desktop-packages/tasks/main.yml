@@ -1,5 +1,5 @@
 - block:
-  - name: TOOLS FOR ARDUINO, RASPBERRY
+  - name: ARDUINO, RASPBERRY TOOLS
     dnf:
       name:
         - arduino
@@ -7,10 +7,9 @@
         - arm-image-installer
       state: latest
 
-  - name: DEVELOPMENT, LANGUAGES AND FRAMEWORKS OF PROGRAMMING
+  - name: PROGRAMMING LANGUAGES AND FRAMEWORKS
     dnf:
       name:
-        - sqlitebrowser
         - glade
         - php-cli
         - java
@@ -18,7 +17,7 @@
         - gd
         - hugo
         - yarn
-        - nodejs:14
+        - nodejs
       state: latest
 
   - name: GRAPHICS DESIGN
@@ -48,7 +47,7 @@
       - thunderbird
       state: latest
 
-  - name: INSTALL GOOGLE CHROME
+  - name: GOOGLE CHROME
     dnf:
       name: google-chrome-stable
       enablerepo: google-chrome 
@@ -82,20 +81,19 @@
         - VirtualBox
       state: latest
 
-  - name: INSTALL MARIADB
+  - name: DATABASE TOOLS
     dnf:
       name: 
-        - mariadb-server
-        - mariadb-server-utils
         - mycli
+        - sqlitebrowser
       state: latest
 
-  - name: INSTALL VSCODE
+  - name: VSCODE
     dnf:
       name: code
       state: latest
 
-  - name: INSTALL DOCKER
+  - name: DOCKER CE
     dnf:
       name:
         - docker-ce
@@ -115,7 +113,7 @@
 
   - debug: msg="{{ kernel_machine_output.stdout }}"
 
-  - name: INSTALL DOCKER COMPOSE
+  - name: DOCKER COMPOSE
     get_url:
       url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name_output.stdout }}-{{ kernel_machine_output.stdout }}
       dest: /usr/local/bin/docker-compose 
@@ -124,12 +122,6 @@
   - name: ENABLE DOCKER DAEMON
     systemd:
       name: docker
-      state: started
-      enabled: yes
-
-  - name: ENABLE MARIADB DAEMON
-    systemd:
-      name: mariadb
       state: started
       enabled: yes
 
@@ -145,6 +137,23 @@
       #shell: /bin/bash
       groups: vboxusers,qemu,libvirt,docker
       append: yes
+
+  - name: CREATE FILE TERMINATOR
+    file:
+      path: /home/{{ fedora_user }}/.config/terminator
+      state: directory
+      mode: "0644"
+      owner: "{{ fedora_user }}"
+      group: "{{ fedora_user }}"
+      recurse: yes
+
+  - name: ADD CONFIG FILE FOR TERMINATOR
+    template:
+      src: terminator-config
+      dest: /home/{{ fedora_user }}/.config/terminator/config
+      owner: "{{ fedora_user }}"
+      group: "{{ fedora_user }}"
+      mode: "0644"
 
 #  - name: ADD ON GROUP DOCKER
 #    shell: usermod -a -G docker {{ fedora_user }}
