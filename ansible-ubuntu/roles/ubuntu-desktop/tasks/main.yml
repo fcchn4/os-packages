@@ -91,6 +91,7 @@
         - keepassxc
         - gromit-mpx
         - hunspell-es
+        - pwgen
       state: latest
 
   - name: HDD TOOLS
@@ -103,7 +104,6 @@
         - exfat-fuse
         - exfat-utils
       state: latest
- 
 
   - name: SSH SERVER
     apt:
@@ -284,6 +284,23 @@
 
   - name: DETECT AUTOMATIC SENSORS
     shell: sensors-detect --auto
+
+  - name: CREATE FILE TERMINATOR
+    file:
+      path: /home/{{ ubuntu_user }}/.config/terminator
+      state: directory
+      mode: "0644"
+      owner: "{{ ubuntu_user }}"
+      group: "{{ ubuntu_user }}"
+      recurse: yes
+
+  - name: ADD CONFIG FILE FOR TERMINATOR
+    template:
+      src: terminator-config
+      dest: /home/{{ ubuntu_user }}/.config/terminator/config
+      owner: "{{ ubuntu_user }}"
+      group: "{{ ubuntu_user }}"
+      mode: "0644"
 
   - name: ENABLE DAEMONS
     systemd:

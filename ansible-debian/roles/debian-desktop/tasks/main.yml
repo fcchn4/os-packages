@@ -78,6 +78,7 @@
         - hardinfo
         - tmux
         - terminator
+        - pwgen
       state: latest
 
   - name: SSH SERVER
